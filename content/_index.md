@@ -1,6 +1,6 @@
 ---
 title: "Internship Report"
-date: 2026-04-12
+date: 2026-09-25
 weight: 1
 chapter: false
 ---
@@ -11,23 +11,23 @@ chapter: false
 
 
 ### Student Information:
-&emsp; **Full Name:** Trần Hoàng Chiến
+&emsp; **Full Name:** Ngô Bảo Vượng
 
-&emsp; **Phone Number:** 0834972928 
+&emsp; **Phone Number:** 0795383026
 
-&emsp; **Email:** vc24902@gmail.com
+&emsp; **Email:** goat2k0@gmail.com
 
-&emsp; **University:** Ho Chi Minh City University of Technology
+&emsp; **University:** Hanoi University of Civil Engineering
 
 &emsp; **Major:** Information Technology
 
-&emsp; **Class:** 22TDHC7
+&emsp; **Class:** 67MHT
 
 &emsp; **Internship Company:** Amazon Web Services Viet Nam Company Limited
 
 &emsp; **Internship Position:** Workforce Bootcamp - First Cloud AI Journey
 
-&emsp; **Internship Duration:** From 17/04/2026 to 30/7/2026
+&emsp; **Internship Duration:** From 03/08/2026 to 27/09/2026
 
 ![Your profile picture](/images/avatar.jpg)
 

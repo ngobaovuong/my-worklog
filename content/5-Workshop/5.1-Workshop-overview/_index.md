@@ -1,128 +1,118 @@
 ---
 title : "Workshop Overview"
-date : 2026-01-01
+date : 2026-09-25
 weight : 1
 chapter : false
 pre : " <b> 5.1. </b> "
 ---
 
-### Goal
+### Objectives
 
-This workshop demonstrates how to deploy a cloud-native **Second-Hand Marketplace** application on AWS using containerized services, secure networking, automated deployment, and managed cloud services. After completing this workshop, you will be able to deploy a production-ready web application with high availability, scalability, and security.
-
----
-
-## 1. Use Case & Solution Overview
-
-The **Second-Hand Marketplace** is a web application that allows users to buy and sell second-hand products online. The system provides essential features such as user authentication, product management, category management, product image uploads, and product searching.
-
-Instead of deploying the application on a traditional virtual machine, this workshop adopts a modern cloud-native architecture on AWS. The application is containerized using Docker and deployed on **Amazon ECS Fargate**, while product images are stored in **Amazon S3** and application data is stored in **MongoDB Atlas**.
-
-To improve security and maintainability, sensitive configuration values are stored in **AWS Secrets Manager**, while **Application Load Balancer**, **Amazon Route 53**, and **AWS Certificate Manager (ACM)** provide secure public access through HTTPS. The deployment process is automated using **AWS CodeBuild**, and application health is monitored using **Amazon CloudWatch**.
+This workshop guides you through deploying the **AWS Media Vault** application on AWS using a Serverless Cloud-Native architecture, AWS Managed Services, Event-Driven processing, and secure file transfers via S3 Presigned URLs. Upon completion of this workshop, you will be able to deploy a production-ready media processing and storage platform featuring instant scalability, zero idle costs, and enterprise-grade security adhering to the AWS Well-Architected Framework.
 
 ---
 
-## 2. Architecture Diagram
+## 1. Problem Statement & Solution
 
-The architecture consists of several major components:
+**AWS Media Vault** is a web-based platform allowing users to securely upload, store, and download multimedia assets (images and videos). The system supports direct browser uploads, automated metadata extraction, NoSQL audit logging, instant email reporting, and real-time operational failure tracking.
 
-- Client Access
-- Domain & HTTPS
-- Networking Infrastructure
-- Containerized Application
-- Storage Services
-- CI/CD Pipeline
-- Monitoring & Logging
+Instead of running the application on traditional virtual machines (such as Amazon EC2) which incur ongoing idle costs and storage security risks, this workshop implements a 100% serverless architecture on AWS. The client frontend is served statically via **Amazon S3 Static Website Hosting**. The browser interfaces securely with cloud backend logic through **Amazon API Gateway** and **AWS Lambda** to synthesize **S3 Presigned URLs**, allowing direct, authenticated uploads into private **Amazon S3** buckets without opening public bucket access or exposing AWS IAM credentials.
 
-**Figure 1 – Second-Hand Marketplace Architecture**
+To enhance automation and observability, metadata for every uploaded object is stored in **Amazon DynamoDB**, while formatted event digests are fanned out via **Amazon SNS** to administrator inboxes. Inter-service privileges are tightly governed by **AWS IAM** adhering to the Principle of Least Privilege. Simultaneously, **Amazon CloudWatch** aggregates execution logs, tracks runtime metrics, and triggers alarms upon application errors.
 
-![System Architecture](/images/5-Workshop/5.1-Workshop-overview/system_architecture.png)
+---
+
+## 2. System Architecture
+
+The overall system architecture comprises the following core components:
+
+- End User (Web Browser Client)
+- Static Presentation Layer (Amazon S3 Website Hosting)
+- Managed API Entry Point with CORS (Amazon API Gateway)
+- Serverless Compute Layer (AWS Lambda)
+- Private Object Storage (Amazon S3 Data Bucket)
+- NoSQL Database Layer (Amazon DynamoDB)
+- Push Alerting Engine (Amazon SNS)
+- Real-time Observability & Alarms (Amazon CloudWatch)
+
+**Figure 1 – AWS Media Vault System Architecture**
+
+![System Architecture](/images/5-Workshop/5.1-Workshop-overview/diagram.drawio.png)
 
 ---
 
 ## 3. System Workflow
 
-The application processes user requests through the following workflow:
+The primary execution workflow proceeds through the following sequential stages:
 
-1. Users access the application using a custom domain managed by **Amazon Route 53**.
+1. The client accesses the web application hosted via **Amazon S3 Static Website Hosting**.
 
-2. HTTPS certificates issued by **AWS Certificate Manager (ACM)** encrypt all communications.
+2. Upon selecting a media file to upload, the browser issues an asynchronous HTTP POST request to **Amazon API Gateway** on the CORS-enabled `/media` endpoint.
 
-3. Incoming requests are routed through the **Application Load Balancer (ALB)**.
+3. API Gateway transparently proxies the payload to **AWS Lambda** via Lambda Proxy Integration.
 
-4. The ALB forwards traffic to containerized services running on **Amazon ECS Fargate**.
+4. The Lambda function uses the AWS SDK (Boto3) to generate an ephemeral, SigV4-signed **S3 Presigned URL (PUT)** with a 300-second expiration and returns it to the client.
 
-5. The Node.js application processes business logic and communicates with **MongoDB Atlas** to store and retrieve application data.
+5. The browser issues a direct HTTP PUT request using the Presigned URL to push the binary file directly into the private **Amazon S3 (Data Bucket)**.
 
-6. Product images are uploaded and stored in **Amazon S3**.
+6. The arrival of the object emits an `s3:ObjectCreated:*` event, which automatically triggers the **AWS Lambda** backend processing flow.
 
-7. Sensitive application configuration such as database credentials is retrieved securely from **AWS Secrets Manager**.
+7. Lambda extracts the file metadata (key name, size, MIME type, upload timestamp) and writes an audit record into the **Amazon DynamoDB** table.
 
-8. Application logs and metrics are collected by **Amazon CloudWatch** for monitoring and troubleshooting.
+8. Lambda formats a structured transaction digest and publishes the payload to an **Amazon SNS Topic**, which automatically dispatches an alert email to the administrator.
 
-9. When source code is pushed to GitHub, **AWS CodeBuild** automatically builds a Docker image, pushes it to **Amazon ECR**, and deploys the latest version to **Amazon ECS**.
+9. Execution logs and telemetry metrics are streamed to **Amazon CloudWatch**. If an unhandled exception occurs, a CloudWatch Alarm triggers an urgent incident notification via SNS.
 
----
-
-## 4. In-Scope Services
-
-The AWS services implemented in this workshop include:
-
-### Networking
-
-- Amazon VPC
-- Public Subnet
-- Private Subnet
-- Internet Gateway
-- NAT Gateway
-- Security Groups
-
-### Compute
-
-- Amazon ECS Fargate
-- Application Load Balancer
-
-### Storage
-
-- Amazon S3
-- MongoDB Atlas
-
-### Container
-
-- Docker
-- Amazon Elastic Container Registry (Amazon ECR)
-
-### Security
-
-- AWS IAM
-- AWS Secrets Manager
-- AWS Certificate Manager (ACM)
-
-### Domain
-
-- Amazon Route 53
-
-### CI/CD
-
-- GitHub
-- AWS CodeBuild
-
-### Monitoring
-
-- Amazon CloudWatch
+10. When a user requests a file download, Lambda generates a temporary **S3 Presigned URL (GET)**, allowing secure retrieval from S3 without exposing internal bucket paths.
 
 ---
 
-## 5. Expected Outcomes
+## 4. AWS Services Utilized
+
+This workshop leverages the following AWS services:
+
+### Frontend & API Ingress
+
+- Amazon S3 (Static Website Hosting)
+- Amazon API Gateway (REST API & CORS)
+
+### Serverless Compute
+
+- AWS Lambda (Runtime Python 3.12)
+
+### Storage & Database
+
+- Amazon S3 (Data Bucket)
+- Amazon DynamoDB
+
+### Messaging & Notifications
+
+- Amazon Simple Notification Service (Amazon SNS)
+
+### Security & Access Control
+
+- AWS Identity and Access Management (AWS IAM)
+- S3 Bucket Policies & CORS Configuration
+
+### Observability & Operations
+
+- Amazon CloudWatch Logs
+- Amazon CloudWatch Metrics & Alarms
+
+---
+
+## 5. Learning Outcomes
 
 Upon completing this workshop, you will be able to:
 
-- Deploy a containerized Node.js application on Amazon ECS Fargate.
-- Configure a secure networking environment using Amazon VPC.
-- Store application data in MongoDB Atlas.
-- Store product images in Amazon S3.
-- Secure sensitive application configuration using AWS Secrets Manager.
-- Configure HTTPS using ACM and Route 53.
-- Build an automated deployment pipeline using GitHub, CodeBuild, Amazon ECR, and Amazon ECS.
-- Monitor application logs and system health using Amazon CloudWatch.
-- Remove all AWS resources to avoid unnecessary costs.
+- Build and host a static frontend using Amazon S3 Static Website Hosting.
+- Provision a REST API on Amazon API Gateway supporting CORS preflight checks for ANY and OPTIONS methods.
+- Develop an AWS Lambda function (Python 3.12) capable of handling both synchronous HTTP requests and asynchronous S3 event records.
+- Implement and master AWS SigV4 S3 Presigned URL generation for direct PUT/GET transfers.
+- Configure Cross-Origin Resource Sharing (CORS) rules on private S3 buckets for client-side uploads.
+- Persist and query NoSQL metadata records in Amazon DynamoDB.
+- Set up an automated notification pipeline with Amazon SNS Topics and Email Subscriptions.
+- Enforce IAM Least Privilege access while diagnosing and resolving Permissions Boundary restrictions.
+- Centralize operational logging and configure proactive CloudWatch Alarms for error states.
+- Perform end-to-end functional validation, download verification, and fault-injection testing.
+- Tear down all provisioned cloud assets to guarantee zero ongoing billing post-workshop.

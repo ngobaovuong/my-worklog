@@ -1,34 +1,32 @@
 ---
-title: "Sự kiện đã tham gia"
-date: 2024-01-01
+title: "Sự kiện"
+date: 2026-07-25
 weight: 4
 chapter: false
-pre: " <b> 4 </b> "
+pre: " <b> 4. </b> "
 ---
-# SỰ KIỆN ĐÃ THAM GIA
 
-Trong quá trình học tập và tìm hiểu về AWS Cloud, tôi đã tham gia nhiều sự kiện và hội thảo kỹ thuật do cộng đồng AWS tổ chức. Những sự kiện này giúp tôi có cơ hội học hỏi từ các chuyên gia trong ngành, cập nhật các công nghệ điện toán đám mây mới và kết nối với những người có cùng đam mê về Cloud.
+Bên cạnh việc tự học và hoàn thành các khóa học chuyên môn, việc chủ động tham gia vào cộng đồng AWS rộng lớn là một trụ cột quan trọng trong hành trình trở thành Cloud Engineer của tôi. Việc tham dự các hội thảo công nghệ (Tech Summits), các buổi thực hành Builder Labs và những buổi Meetup của cộng đồng AWS User Group đã mang lại cho tôi những góc nhìn kiến trúc chuyên sâu, bối cảnh thực tế từ doanh nghiệp và cơ hội tiếp cận với các mô hình điện toán đám mây tiên tiến nhất.
 
-Những kiến thức và trải nghiệm tôi nhận được bao gồm:
+Việc tham gia các sự kiện này đã giúp tôi:
 
-* Tìm hiểu về các dịch vụ và công nghệ mới trên AWS.
-* Hiểu thêm về kiến trúc hệ thống và các giải pháp triển khai trong thực tế.
-* Lắng nghe chia sẻ kinh nghiệm từ các chuyên gia và diễn giả AWS.
-* Nâng cao kiến thức thực hành thông qua các buổi workshop kỹ thuật.
-* Giao lưu, trao đổi kinh nghiệm với cộng đồng yêu thích AWS.
-* Củng cố kiến thức về điện toán đám mây và định hướng phát triển nghề nghiệp.
+- Khám phá các mô hình kiến trúc AWS hiện đại, các giải pháp Serverless đột phá và khung quản trị an toàn thông tin đám mây (Cloud Security Frameworks).
+- Phân tích chiến lược triển khai hệ thống quy mô Production và các bài học thực tế (Case Studies) từ các chuyên gia đầu ngành.
+- Trực tiếp kết nối và trao đổi cùng các AWS Solutions Architect, AWS Community Builder và các kỹ sư Senior DevOps.
+- Rút ngắn khoảng cách giữa lý thuyết và vận hành thực tế thông qua các cuộc thi GameDay tương tác cùng các buổi workshop kỹ thuật.
+- Mở rộng mạng lưới kết nối chuyên nghiệp và hợp tác với các kỹ sư đám mây có cùng định hướng.
+- Nắm bắt kịp thời các xu hướng công nghệ mới nổi, bao gồm phát triển ứng dụng Cloud-native và các thực hành CloudOps.
 
-Các trang tiếp theo sẽ trình bày chi tiết từng sự kiện, bao gồm:
+Các phần tóm tắt sự kiện dưới đây bao gồm:
 
-* Mục tiêu của sự kiện
-* Nội dung các phiên chia sẻ
-* Những điểm nổi bật
-* Kiến thức tiếp thu được
-* Cảm nhận cá nhân
-* Hình ảnh của sự kiện
+- Mục tiêu của sự kiện
+- Nội dung các phiên chia sẻ
+- Những điểm nổi bật
+- Kiến thức tiếp thu được
+- Cảm nhận cá nhân
+- Hình ảnh của sự kiện
 
-## Danh sách sự kiện
+## Các sự kiện
 
-* Sự kiện 1 – FCAJ Community Day
-* Sự kiện 2 – AWS Workshop
-* Sự kiện 3 – FCAJ Community Day
+**Sự kiện 1:** [ AWS VIETNAM COMMUNITY MEETUP](4.1-Event1/_index.vi.md)
+**Sự kiện 2:** [ TechMaker Coffee Talk #01](4.2-Event2/_index.md)

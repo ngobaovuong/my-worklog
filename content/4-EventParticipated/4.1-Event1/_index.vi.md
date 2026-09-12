@@ -1,22 +1,22 @@
 ---
-title: "Sự kiện 1 - FCAJ Community Day"
-date: 2026-05-23
+title: "Sự kiện 1 - AWS VIETNAM COMMUNITY MEETUP"
+date: 2026-07-25
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-# FCAJ Community Day
+# AWS VIETNAM COMMUNITY MEETUP
 
 ## Thông tin sự kiện
 
-| Mục | Chi tiết |
-|------|---------|
-| **Tên sự kiện** | FCAJ Community Day – AWS First Cloud AI Journey |
-| **Ngày** | Thứ Bảy, 23/05/2026 |
-| **Thời gian** | 09:00 – 12:00 (GMT+7) |
-| **Địa điểm** | Tầng 26, Tòa nhà Bitexco Financial Tower, TP. Hồ Chí Minh |
-| **Vai trò** | Người tham dự |
+| Mục             | Chi tiết                                                             |
+| --------------- | -------------------------------------------------------------------- |
+| **Tên sự kiện** | AWS VIETNAM COMMUNITY MEETUP                                         |
+| **Ngày**        | Thứ Bảy, 25/07/2026                                                  |
+| **Thời gian**   | 08:30 – 12:00 (GMT+7)                                                |
+| **Địa điểm**    | AWS Hà Nội – Tầng 7, Grand Terra Tower, 36 Cát Linh, Đống Đa, Hà Nội |
+| **Vai trò**     | Người tham dự                                                        |
 
 ---
 
@@ -24,110 +24,120 @@ pre: " <b> 4.1. </b> "
 
 ## Mục tiêu của sự kiện
 
-FCAJ Community Day được tổ chức nhằm giới thiệu những công nghệ mới nhất về điện toán đám mây (Cloud Computing) và Trí tuệ nhân tạo tạo sinh (Generative AI) thông qua các buổi chia sẻ thực tế từ các chuyên gia AWS và các kỹ sư giàu kinh nghiệm. Sự kiện cũng tạo cơ hội cho sinh viên và lập trình viên tìm hiểu các giải pháp Cloud trong thực tế, khám phá các công cụ phát triển ứng dụng sử dụng AI và kết nối với cộng đồng AWS.
+AI đang thay đổi cách chúng ta xây dựng sản phẩm, phát triển doanh nghiệp và giải quyết các bài toán thực tế. Bạn đã sẵn sàng khám phá những xu hướng AI mới nhất và cách áp dụng chúng trên AWS chưa?
+
+Tham gia AWS Vietnam Community Meetup để gặp gỡ các AWS Community Heroes, Community Builders và các chuyên gia đang trực tiếp triển khai AI trong doanh nghiệp.
 
 ---
 
 ## Diễn giả
 
-- Tinh Truong
-- Anh Pham
-- Thinh Nguyen
-- Team VIB
-- Duc Dao
-- Vy Lam
+- Hồ Việt Anh
+- Tuấn Vũ
+- Nguyễn Thu
+- Nam La
+- Đức Bùi
 
 ---
 
 # Những nội dung nổi bật
 
-## Context Is Everything: Making AI Actually Work for You
+## OpenClaw – The Rise and Practice of Open-Source AI Agents
 
-- Tầm quan trọng của Context trong hệ thống AI
-- Prompt Engineering và AI Memory
-- Định hướng nghề nghiệp cho người học AI
+- OpenClaw thực chất là gì - một agent runtime mã nguồn mở
+- Kiến trúc phân lớp của OpenClaw (L1–L4)
+- Các use case thực tế và khả năng multi-agent nâng cao
+- Những điểm bắt đầu "vỡ vụn" (rủi ro hệ thống)
+- Ý nghĩa của điều này đối với các developer
 
-## Friendly AI Assistant with Amazon Quick
+## AI Trends Through the Lens of an Infrastructure Engineer
 
-- Xây dựng trợ lý AI
-- Quy trình làm việc thông minh
-- Dashboard bằng ngôn ngữ tự nhiên
-- Cộng tác nhóm với Quick Spaces
+- Bối cảnh chung: AI đang định hình lại hạ tầng (infrastructure) như thế nào
+- AI đã thay đổi công việc của Infrastructure Engineer ra sao
+- AI trong toàn bộ infrastructure stack: IaC, AIOps, FinOps, Security, GenAI coding
+- Bước tiếp theo: hạ tầng agentic và AI-native
+- Kỹ năng và thách thức phía trước
 
-## From Edge To Origin: CloudFront as Your Foundation
+## Community Update
 
-- Kiến trúc Amazon CloudFront
-- Tối ưu hiệu năng
-- Khả năng bảo mật
-- Cải thiện độ tin cậy
-- Tối ưu chi phí
+- Những cột mốc đáng nhớ đã định hình sự phát triển của cộng đồng qua các năm.
+- Các hoạt động chia sẻ kiến thức trong những buổi gặp mặt.
+- Hợp tác và làm việc cùng AWS tại Mỹ.
 
-## 36 hrs with LotusHacks – Building UTMorpho from Idea to Reality
+## Ship Fast with AI, Not by AI
 
-- Quá trình lên ý tưởng
-- Phát triển sản phẩm AI trong 36 giờ
-- Kiến trúc và trình diễn sản phẩm
-- Những khó khăn trong quá trình phát triển
-- Bài học từ cuộc thi Hackathon
+- Encode knowledge as infrastructure
+- Xây dựng ngôn ngữ chung với agent
+- Lưu docs ngay trong repo
+- Code càng critical, hãy viết càng nhiều code để verify
+- Xây dựng một superpowered engineer
 
-## Non-Determinism of "Deterministic" LLM Settings
+## From AI Trends to Business Value
 
-- Cách LLM tạo ra câu trả lời
-- Vì sao Temperature = 0 vẫn không hoàn toàn xác định
-- Ảnh hưởng trong thực tế
-- Các giải pháp khắc phục
-
-## Enterprise-Grade Multi-Agent System
-
-- Kiến trúc hệ thống Multi-Agent AI
-- Chấm điểm tín dụng cho Startup
-- Guardrails và Compliance
-- Lộ trình triển khai cho doanh nghiệp
+- AI đã giúp Sales tạo ra giá trị kinh doanh như thế nào?
+- Sales dành thời gian của mình cho việc gì?
+- AI hỗ trợ ở mọi giai đoạn
+- AI không chốt deal. Con người mới chốt deal.
 
 ---
 
 # Kiến thức tiếp thu
 
-## Điện toán đám mây
+## 1. Ship Fast with AI, Not by AI
 
-- Amazon CloudFront giúp cải thiện hiệu năng, bảo mật và độ tin cậy của ứng dụng.
-- Có thể kết hợp nhiều dịch vụ AWS để xây dựng các ứng dụng AI có khả năng mở rộng.
+- **Inner Loop** — Vòng viết → chạy → debug. AI đã giúp vòng này nhanh hơn khoảng 10 lần.
+- **Outer Loop** — Vòng review → tích hợp → deploy → vận hành. Vẫn hoàn toàn phụ thuộc vào con người; không có gì tự động làm nó nhanh hơn.
+- **Encode Knowledge as Infrastructure** — Biến các lỗi lặp đi lặp lại thành lint rule hoặc CI check để chặn vĩnh viễn, thay vì sửa tay từng lần.
+- **Living Wiki** — Một "ngôn ngữ chung" bằng markdown giữa người và agent — agent đọc trước khi đặt tên và tự ghi lại khi có khái niệm mới hình thành.
+- **Stay the Author** — Mục tiêu không phải là một agent siêu mạnh, mà là một kỹ sư siêu mạnh — con người vẫn là người chịu trách nhiệm cuối cùng.
 
-## Trí tuệ nhân tạo
+## 2. AI Trends – Infrastructure Engineer
 
-- Context ảnh hưởng rất lớn đến chất lượng phản hồi của AI.
-- Hiểu cơ chế suy luận của LLM giúp xây dựng hệ thống AI hiệu quả hơn.
-- AI nên hỗ trợ lập trình viên thay vì thay thế hoàn toàn.
+- **AIOps** — AI tự động phát hiện bất thường và dự đoán sự cố hạ tầng trước khi ảnh hưởng đến người dùng.
+- **AI-driven IaC** — AI sinh code hạ tầng (Terraform/CDK) từ ngôn ngữ tự nhiên, tự review và phát hiện configuration drift.
+- **FinOps** — AI liên tục phân tích usage để tối ưu chi phí theo thời gian thực (right-sizing, gợi ý Savings Plan).
+- **Agentic Infrastructure** — Nấc thang trưởng thành mà hạ tầng đang đi qua: Assisted → Automated → Agentic → Self-managing.
+- **Explainability** — Hiểu được _vì sao_ AI ra quyết định — điều kiện cần để tin tưởng và chịu trách nhiệm về nó.
 
-## Phát triển phần mềm
+## 3. AI Trends to Business – Sales
 
-- Hackathon giúp nâng cao kỹ năng làm việc nhóm và giải quyết vấn đề nhanh.
-- Xây dựng MVP cần cân bằng giữa tốc độ, chất lượng và giá trị cho người dùng.
+- **AI / GenAI / Agent** — Ba tầng công nghệ AI mà Sales đang áp dụng, từ trợ lý đơn giản đến agent tự hành động.
+- **Time Allocation Gap** — Sales chỉ dành 5–10% thời gian để gặp khách hàng thực sự; phần còn lại là công việc chuẩn bị lặp đi lặp lại.
+- **AI-Augmented Sales Journey** — AI hỗ trợ ở mọi giai đoạn: prospecting → research → discovery → proposal → follow-up.
+- **Time-to-Value Compression** — AI rút ngắn đáng kể các công việc như research và viết proposal (ví dụ: research từ 2 giờ xuống còn 20 phút).
+- **Human Trust** — Trust, quan hệ, giao tiếp và đàm phán là những điều AI không thể thay thế khi chốt deal.
 
-## Phát triển nghề nghiệp
+## 4. OpenClaw – Open-Source AI Agents
 
-- Giao lưu với các chuyên gia AWS giúp mở rộng kiến thức chuyên môn.
-- Các sự kiện cộng đồng khuyến khích việc học tập liên tục và định hướng nghề nghiệp.
+- **Agent Runtime** — OpenClaw không phải là một app, mà là một "hệ điều hành" để chạy và nuôi dưỡng các AI agent.
+- **Layered Architecture (L1–L4)** — Từ tầng gọi model (L1), đến agent execution loop (L2), coding-agent layer (L3), và gateway với memory/cron/session (L4).
+- **Agent Loop (Steering + Follow-ups)** — Cơ chế giúp agent tự suy luận, gọi tool, và tự quyết định hành động tiếp theo.
+- **Skill Injection Risk** — Rủi ro an ninh khi skill/plugin của agent có thể chứa mã độc hoặc bị khai thác qua prompt injection.
+- **Memory as Prompt Augmentation** — Thứ hiện tại được gọi là "memory" của agent thực chất chỉ là văn bản được chèn thêm vào prompt, chưa phải là một cấu trúc memory thực sự.
 
 ---
 
 # Cảm nhận sau sự kiện
 
-Tham gia FCAJ Community Day là một trải nghiệm rất hữu ích trong quá trình học AWS của tôi. Sự kiện giúp tôi tiếp cận các kiến thức thực tế về điện toán đám mây và những ứng dụng AI hiện đại thông qua các buổi chia sẻ kỹ thuật.
+Tham gia AWS Vietnam Community Meetup là một trải nghiệm quý giá trong hành trình học hỏi về AI và cloud của tôi. Sự kiện đã tập hợp nhiều bài chia sẻ kỹ thuật, bao trùm cả khía cạnh hạ tầng (infrastructure) và ứng dụng AI trong kinh doanh.
 
-Tôi đặc biệt ấn tượng với phần trình bày về Amazon CloudFront vì nội dung đã giới thiệu nhiều kỹ thuật thực tế để cải thiện hiệu năng và bảo mật cho ứng dụng. Phiên chia sẻ về LotusHacks cũng truyền cảm hứng khi cho thấy một nhóm có thể biến ý tưởng thành sản phẩm AI hoàn chỉnh chỉ trong 36 giờ.
+Tôi đặc biệt thích bài trình bày "OpenClaw" vì nó cho thấy một dự án mã nguồn mở có thể phát triển từ một bot chuyển tiếp WhatsApp đơn giản thành một agent runtime hoàn chỉnh, vượt qua React về số lượng GitHub stars chỉ trong vài tháng. Bài nói "Ship Fast with AI, Not by AI" cũng truyền cảm hứng cho tôi khi cho thấy rằng viết code nhanh hơn với AI là chưa đủ — tốc độ thực sự đến từ việc đầu tư vào review, testing và chia sẻ kiến thức trong cả team.
 
-Ngoài kiến thức chuyên môn, tôi còn có cơ hội giao lưu với các chuyên gia Cloud, trao đổi với những người tham dự khác và hiểu rõ hơn về xu hướng phát triển của ngành.
+Bên cạnh các bài kỹ thuật, phần trình bày về xu hướng AI từ góc nhìn của một Infrastructure Engineer giúp tôi hiểu rõ hơn cách AIOps, FinOps và AI-driven IaC đang định hình lại công việc vận hành cloud hàng ngày. Tôi cũng thấy bài nói về ứng dụng AI trong Sales rất thú vị, khi nó cho thấy AI có thể giải phóng các chuyên gia khỏi công việc chuẩn bị lặp đi lặp lại để tập trung xây dựng quan hệ khách hàng thực sự.
+
+Nhìn chung, sự kiện đã cho tôi cơ hội kết nối với các chuyên gia cloud và AI, trao đổi ý tưởng với những người tham dự khác, và hiểu rõ hơn về hướng đi của ngành — từ AI-assisted coding đến hạ tầng agentic hoàn toàn.
 
 ---
 
 # Bài học rút ra
 
-- Context chất lượng sẽ tạo ra kết quả AI tốt hơn.
-- CloudFront là một dịch vụ quan trọng của AWS trong phân phối nội dung.
-- Làm việc nhóm và giao tiếp là yếu tố quan trọng trong các dự án phần mềm.
-- Học tập liên tục là điều cần thiết đối với kỹ sư Cloud.
-- Tham gia cộng đồng giúp mở rộng cả kiến thức kỹ thuật và các mối quan hệ nghề nghiệp.
+- Sự kiện này cho tôi thấy rằng tác động lớn nhất của AI không chỉ là làm cho từng công việc riêng lẻ nhanh hơn — mà là việc phải suy nghĩ lại cách tổ chức công việc xung quanh AI. Từ bài "Ship Fast with AI, Not by AI", tôi học được rằng viết code nhanh hơn sẽ vô nghĩa nếu review, testing và deployment không được mở rộng tương ứng; năng suất thực sự đến từ việc đầu tư vào hạ tầng chung như lint rule và tài liệu sống (living documentation), không chỉ dựa vào kết quả AI tạo ra.
+
+- Bài trình bày về hạ tầng cho tôi thấy việc áp dụng AI trong cloud engineering không chỉ là tự động hóa — đó là sự thay đổi về vai trò, từ việc vận hành hệ thống bằng tay sang thiết kế và giám sát những hệ thống ngày càng tự quản lý. Điều này cũng đi kèm trách nhiệm mới, đặc biệt về explainability và security, vì việc tin tưởng một quyết định của AI đòi hỏi phải hiểu được vì sao nó được đưa ra.
+
+- Từ phần trình bày về OpenClaw, tôi học được rằng khi agent có nhiều quyền tự chủ và khả năng truy cập tool hơn, năng lực của chúng đang phát triển nhanh hơn các "hàng rào" an toàn xung quanh — một lời nhắc rằng "memory" và "permissions" trong AI agent vẫn cần được thiết kế chặt chẽ hơn rất nhiều so với hiện tại.
+
+- Cuối cùng, bài nói về Sales củng cố thêm một sự cân bằng quan trọng: AI rất giỏi trong việc loại bỏ công việc lặp đi lặp lại, nhưng trust, quan hệ và đàm phán vẫn hoàn toàn phụ thuộc vào con người. Nhìn chung, sự kiện này giúp tôi nhìn nhận AI không phải là thứ thay thế kỹ năng hay khả năng đánh giá của con người, mà là một công cụ chỉ tạo ra giá trị thực sự khi đi kèm với sự giám sát của con người và những hệ thống được thiết kế tốt xung quanh nó.
 
 ---
 
@@ -135,4 +145,4 @@ Ngoài kiến thức chuyên môn, tôi còn có cơ hội giao lưu với các 
 
 ## Check-in
 
-![Check-in tại FCAJ Community Day](/images/checkin.jpg)
+![Check-in at AWS VIETNAM COMMUNITY MEETUP](/images/event/event1.jpg)

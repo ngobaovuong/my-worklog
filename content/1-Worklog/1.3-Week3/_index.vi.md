@@ -1,59 +1,65 @@
 ---
 title: "Worklog Tuần 3"
-date: 2026-04-12
+date: 2026-08-17
 weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
 
 ### Mục tiêu tuần 3:
+* Nghiên cứu sâu về kiến trúc mạng cô lập Amazon Virtual Private Cloud (Amazon VPC).
+* Nắm vững kỹ thuật phân chia dải mạng con CIDR (IPv4 Subnetting) và phân chia vùng mạng Public / Private Subnet.
+* Thiết kế và cấu hình bảng định tuyến Route Tables, cổng kết nối Internet Gateway (IGW) và cơ chế dịch địa chỉ mạng NAT.
+* Phân tích và cấu hình 2 tầng tường lửa: Security Groups (Stateful) và Network Access Control Lists (Stateless).
 
-* Tìm hiểu bảo mật mạng trên AWS.
-* Thực hành Security Groups.
-* Tìm hiểu Network ACL (NACL).
-* Tìm hiểu Amazon VPC Flow Logs.
-* Tìm hiểu DNS và Amazon Route 53.
-* Tìm hiểu VPC Peering.
-
-### Các công việc cần triển khai trong tuần này:
+### Các công việc triển khai trong tuần:
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------ | --------------- | ----------------------------------------- |
-| 2 | - Tìm hiểu Security Groups.<br>- Tìm hiểu Inbound và Outbound Rules.<br>- Tìm hiểu các giao thức mạng phổ biến. | 26/04/2026 | 26/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 3 | - Thực hành Security Groups.<br>- Tạo và chỉnh sửa Security Groups.<br>- Kiểm tra truy cập SSH và HTTP. | 27/04/2026 | 27/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 4 | - Tìm hiểu Network ACL (NACL).<br>- So sánh NACL với Security Groups.<br>- Tìm hiểu bảo vệ Subnet. | 28/04/2026 | 28/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 5 | - Tìm hiểu Amazon VPC Flow Logs.<br>- Giám sát lưu lượng mạng.<br>- Xem lưu lượng được chấp nhận và bị từ chối. | 29/04/2026 | 29/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 6 | - Tìm hiểu kiến thức cơ bản về DNS.<br>- Tìm hiểu Amazon Route 53.<br>- Xem các loại bản ghi DNS. | 30/04/2026 | 30/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 7 | - Tìm hiểu VPC Peering.<br>- Tìm hiểu kết nối giữa các VPC.<br>- Tìm hiểu yêu cầu định tuyến. | 01/05/2026 | 01/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| CN | - Ôn tập kiến thức trong tuần.<br>- Tổng hợp kiến thức mạng.<br>- Sắp xếp ghi chú học tập. | 02/05/2026 | 02/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| --- | --- | --- | --- | --- |
+| 2 | - Tìm hiểu lý thuyết mạng máy tính đám mây, cấu trúc khối địa chỉ CIDR theo chuẩn RFC 1918.<br>- Khởi tạo Custom VPC với dải IP `10.0.0.0/16` (cung cấp 65,536 địa chỉ IP).<br>- Cấu hình kích hoạt các thuộc tính DNS Resolution và DNS Hostnames cho VPC. | 17/08/2026 | 17/08/2026 | https://docs.aws.amazon.com/vpc/latest/userguide/ |
+| 3 | - Phân tích cơ chế AWS dành riêng 5 địa chỉ IP trong mỗi Subnet (.0, .1, .2, .3, .255).<br>- Tạo Public Subnet A (`10.0.1.0/24`) tại AZ `ap-southeast-1a` và Public Subnet B (`10.0.2.0/24`) tại AZ `ap-southeast-1b`.<br>- Tạo Private Subnet A (`10.0.10.0/24`) tại AZ `ap-southeast-1a` và Private Subnet B (`10.0.20.0/24`) tại AZ `ap-southeast-1b`. | 18/08/2026 | 18/08/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 4 | - Khởi tạo Internet Gateway (IGW) và gắn (attach) vào Custom VPC.<br>- Tạo Custom Route Table cho Public Subnet, thêm tuyến đường default route `0.0.0.0/0` trỏ đến Internet Gateway.<br>- Liên kết (associate) Public Subnet A và B vào Public Route Table.<br>- Kiểm tra Main Route Table mặc định (chỉ chứa route nội bộ `10.0.0.0/16 local`) dùng riêng cho Private Subnets. | 19/08/2026 | 19/08/2026 | https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html |
+| 5 | - Triển khai một EC2 Instance vào Public Subnet A, bật tùy chọn Auto-assign Public IP.<br>- Triển khai một EC2 Instance thứ hai vào Private Subnet A (chỉ có Private IP).<br>- Thiết lập máy chủ Bastion Host (Jump Host) trên Public Subnet để kết nối SSH an toàn vào máy chủ Private Subnet.<br>- Tìm hiểu cơ chế hoạt động của NAT Gateway (hỗ trợ Private Subnet tải bản vá từ Internet). | 20/08/2026 | 20/08/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 6 | - Cấu hình Network ACL (NACL) tùy biến: phân tích cơ chế đánh số quy tắc (Rule Numbers) từ nhỏ đến lớn và tính chất Stateless.<br>- So sánh chi tiết sự khác nhau trong thực tế giữa Security Group (áp dụng mức ENI/Instance) và Network ACL (áp dụng mức Subnet).<br>- Kiểm thử chặn IP cụ thể thông qua Inbound NACL Deny Rule và quan sát kết quả. | 21/08/2026 | 21/08/2026 | https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html |
 
 ### Kết quả đạt được tuần 3:
+* **Mức độ hoàn thành:** 100%.
+* **Kiến thức lý thuyết:**
+  * Hiểu rõ kiến trúc Multi-AZ VPC chuẩn doanh nghiệp đảm bảo tính cô lập và dự phòng địa lý.
+  * Phân biệt rành mạch cơ chế hoạt động của Internet Gateway (phi trạng thái, co giãn tự động theo băng thông của VPC) và NAT Gateway (dịch địa chỉ mạng cho tài nguyên private đi ra ngoài).
+  * Nắm chắc bản chất Stateful (tự mở chiều về đối với Security Group) và Stateless (phải định nghĩa cả Inbound và Outbound đối với NACL).
+* **Kỹ năng thực hành:**
+  * Tự tay thiết kế và triển khai trọn vẹn mô hình VPC 2 lớp mạng (Public/Private Subnet) trên nhiều Vùng Khả Dụng.
+  * Xây dựng mô hình pháo đài Bastion Host để quản trị hệ thống máy chủ nội bộ mà không để lộ cổng kết nối ra ngoài Internet.---
+title: "Worklog Tuần 3"
+date: 2026-08-17
+weight: 3
+chapter: false
+pre: " <b> 1.3. </b> "
+---
 
-* Tìm hiểu Security Groups:
-  * Inbound Rules.
-  * Outbound Rules.
-  * Các giao thức mạng phổ biến.
+### Mục tiêu tuần 3:
+* Nghiên cứu sâu về kiến trúc mạng cô lập Amazon Virtual Private Cloud (Amazon VPC).
+* Nắm vững kỹ thuật phân chia dải mạng con CIDR (IPv4 Subnetting) và phân chia vùng mạng Public / Private Subnet.
+* Thiết kế và cấu hình bảng định tuyến Route Tables, cổng kết nối Internet Gateway (IGW) và cơ chế dịch địa chỉ mạng NAT.
+* Phân tích và cấu hình 2 tầng tường lửa: Security Groups (Stateful) và Network Access Control Lists (Stateless).
 
-* Thực hành Security Groups:
-  * Tạo và chỉnh sửa Security Groups.
-  * Cấu hình truy cập SSH và HTTP.
+### Các công việc triển khai trong tuần:
 
-* Tìm hiểu Network ACL:
-  * So sánh với Security Groups.
-  * Hiểu cách bảo vệ Subnet.
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Tìm hiểu lý thuyết mạng máy tính đám mây, cấu trúc khối địa chỉ CIDR theo chuẩn RFC 1918.<br>- Khởi tạo Custom VPC với dải IP `10.0.0.0/16` (cung cấp 65,536 địa chỉ IP).<br>- Cấu hình kích hoạt các thuộc tính DNS Resolution và DNS Hostnames cho VPC. | 17/08/2026 | 17/08/2026 | https://docs.aws.amazon.com/vpc/latest/userguide/ |
+| 3 | - Phân tích cơ chế AWS dành riêng 5 địa chỉ IP trong mỗi Subnet (.0, .1, .2, .3, .255).<br>- Tạo Public Subnet A (`10.0.1.0/24`) tại AZ `ap-southeast-1a` và Public Subnet B (`10.0.2.0/24`) tại AZ `ap-southeast-1b`.<br>- Tạo Private Subnet A (`10.0.10.0/24`) tại AZ `ap-southeast-1a` và Private Subnet B (`10.0.20.0/24`) tại AZ `ap-southeast-1b`. | 18/08/2026 | 18/08/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 4 | - Khởi tạo Internet Gateway (IGW) và gắn (attach) vào Custom VPC.<br>- Tạo Custom Route Table cho Public Subnet, thêm tuyến đường default route `0.0.0.0/0` trỏ đến Internet Gateway.<br>- Liên kết (associate) Public Subnet A và B vào Public Route Table.<br>- Kiểm tra Main Route Table mặc định (chỉ chứa route nội bộ `10.0.0.0/16 local`) dùng riêng cho Private Subnets. | 19/08/2026 | 19/08/2026 | https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html |
+| 5 | - Triển khai một EC2 Instance vào Public Subnet A, bật tùy chọn Auto-assign Public IP.<br>- Triển khai một EC2 Instance thứ hai vào Private Subnet A (chỉ có Private IP).<br>- Thiết lập máy chủ Bastion Host (Jump Host) trên Public Subnet để kết nối SSH an toàn vào máy chủ Private Subnet.<br>- Tìm hiểu cơ chế hoạt động của NAT Gateway (hỗ trợ Private Subnet tải bản vá từ Internet). | 20/08/2026 | 20/08/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 6 | - Cấu hình Network ACL (NACL) tùy biến: phân tích cơ chế đánh số quy tắc (Rule Numbers) từ nhỏ đến lớn và tính chất Stateless.<br>- So sánh chi tiết sự khác nhau trong thực tế giữa Security Group (áp dụng mức ENI/Instance) và Network ACL (áp dụng mức Subnet).<br>- Kiểm thử chặn IP cụ thể thông qua Inbound NACL Deny Rule và quan sát kết quả. | 21/08/2026 | 21/08/2026 | https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html |
 
-* Tìm hiểu Amazon VPC Flow Logs:
-  * Giám sát lưu lượng mạng.
-  * Phân tích nhật ký lưu lượng.
-
-* Tìm hiểu DNS và Amazon Route 53:
-  * Kiến thức cơ bản về DNS.
-  * Các loại bản ghi DNS.
-  * Hosted Zone.
-
-* Tìm hiểu VPC Peering:
-  * Kết nối nhiều VPC.
-  * Cấu hình định tuyến.
-  * Các trường hợp sử dụng phổ biến.
-
-* Củng cố kiến thức về mạng và bảo mật trên AWS.
+### Kết quả đạt được tuần 3:
+* **Mức độ hoàn thành:** 100%.
+* **Kiến thức lý thuyết:**
+  * Hiểu rõ kiến trúc Multi-AZ VPC chuẩn doanh nghiệp đảm bảo tính cô lập và dự phòng địa lý.
+  * Phân biệt rành mạch cơ chế hoạt động của Internet Gateway (phi trạng thái, co giãn tự động theo băng thông của VPC) và NAT Gateway (dịch địa chỉ mạng cho tài nguyên private đi ra ngoài).
+  * Nắm chắc bản chất Stateful (tự mở chiều về đối với Security Group) và Stateless (phải định nghĩa cả Inbound và Outbound đối với NACL).
+* **Kỹ năng thực hành:**
+  * Tự tay thiết kế và triển khai trọn vẹn mô hình VPC 2 lớp mạng (Public/Private Subnet) trên nhiều Vùng Khả Dụng.
+  * Xây dựng mô hình pháo đài Bastion Host để quản trị hệ thống máy chủ nội bộ mà không để lộ cổng kết nối ra ngoài Internet.

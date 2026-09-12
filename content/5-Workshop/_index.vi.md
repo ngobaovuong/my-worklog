@@ -1,32 +1,31 @@
 ---
 title: "Workshop"
-date: 2026-01-01
+date: 2026-09-25
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
 
-# Triển khai Second-Hand Marketplace trên AWS
+# Triển khai AWS Media Vault trên AWS
 
 #### Tổng quan
 
-Trong workshop này, chúng ta sẽ xây dựng và triển khai **Second-Hand Marketplace** bằng kiến trúc cloud-native trên AWS.
+Trong workshop này, chúng ta sẽ xây dựng và triển khai **AWS Media Vault** — một nền tảng lưu trữ, xử lý đa phương tiện và cảnh báo sự kiện tự động theo kiến trúc Cloud-Native Serverless hoàn toàn trên AWS.
 
-Giải pháp sử dụng các dịch vụ AWS như **Amazon ECS Fargate**, **Amazon ECR**, **Amazon S3**, **AWS CodeBuild**, **Application Load Balancer**, **Amazon CloudWatch**, **Amazon Route 53** và **AWS Certificate Manager (ACM)**, kết hợp với **MongoDB Atlas** nhằm xây dựng một nền tảng có khả năng mở rộng, bảo mật, tính sẵn sàng cao và hỗ trợ triển khai tự động.
+Giải pháp sử dụng 7 dịch vụ AWS cốt lõi bao gồm: **Amazon S3** (Lưu trữ nhị phân riêng tư & Static Web Hosting), **AWS Lambda** (Xử lý tính toán không máy chủ), **Amazon API Gateway** (REST API an toàn với CORS), **Amazon DynamoDB** (Lưu trữ Metadata NoSQL tốc độ cao), **Amazon SNS** (Hệ thống thông báo đẩy qua Email), **Amazon CloudWatch** (Thu thập Logs, Metrics & Cảnh báo Alarm), và **AWS IAM** (Quản lý định danh và phân quyền tối thiểu Least Privilege).
 
-Trong suốt workshop này, bạn sẽ chuẩn bị môi trường dự án, cấu hình hạ tầng mạng, tích hợp các dịch vụ của ứng dụng, đóng gói ứng dụng bằng Docker, triển khai lên Amazon ECS Fargate, cấu hình tên miền và HTTPS, tự động hóa quá trình triển khai bằng AWS CodeBuild, giám sát hệ thống, thực hiện kiểm thử toàn bộ ứng dụng và cuối cùng dọn dẹp tất cả tài nguyên AWS đã tạo.
+Toàn bộ quy trình sẽ hướng dẫn bạn từ khâu chuẩn bị tài khoản, cấu hình phân quyền IAM, thiết lập lưu trữ và cơ sở dữ liệu, viết mã nguồn Lambda, dựng cổng API Gateway, triển khai giao diện người dùng trực tiếp trên S3, cấu hình hệ thống giám sát CloudWatch, cho đến kiểm thử tích hợp, kiểm thử bơm lỗi và dọn dẹp tài nguyên.
 
-#### Nội dung
+#### Nội dung chi tiết
 
 1. [Tổng quan Workshop](5.1-Workshop-overview/)
 2. [Điều kiện chuẩn bị](5.2-Prerequisite/)
-3. [Chuẩn bị nền tảng dự án](5.3-Project-foundation/)
-4. [Cấu hình hạ tầng mạng](5.4-Networking/)
-5. [Cấu hình các dịch vụ ứng dụng](5.5-Application-Services/)
-6. [Đóng gói ứng dụng bằng Docker](5.6-Containerization/)
-7. [Triển khai ứng dụng](5.7-Deploy-Application/)
-8. [Cấu hình tên miền và HTTPS](5.8-Domain-and-HTTPS/)
-9. [Thiết lập CI/CD](5.9-CICD/)
-10. [Giám sát hệ thống](5.10-Monitoring/)
-11. [Kiểm thử hệ thống](5.11-Testing/)
-12. [Dọn dẹp tài nguyên](5.12-Cleanup/)
+3. [Cấu hình phân quyền IAM](5.3-IAM-Setup/)
+4. [Thiết lập Lưu trữ & Cơ sở dữ liệu](5.4-Storage-Database/)
+5. [Cấu hình Thông báo qua SNS](5.5-SNS-Notification/)
+6. [Phát triển logic với AWS Lambda](5.6-Lambda-Compute/)
+7. [Xây dựng cổng kết nối API Gateway](5.7-API-Gateway/)
+8. [Triển khai Web Hosting trên S3](5.8-Web-Hosting/)
+9. [Giám sát & Báo động với CloudWatch](5.9-Monitoring/)
+10. [Kiểm thử hệ thống & Bơm lỗi](5.10-Testing/)
+11. [Dọn dẹp tài nguyên](5.11-Cleanup/)

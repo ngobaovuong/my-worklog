@@ -1,63 +1,35 @@
 ---
-title: "Week 2 Worklog"
-date: 2026-04-12
+title: "Worklog Week 2"
+date: 2026-08-10
 weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
 
 ### Week 2 Objectives:
+* Perform deep-dive research and hands-on practice with core AWS services: IAM, Amazon EC2, and Amazon S3.
+* Apply the Principle of Least Privilege across IAM Users, User Groups, Roles, and custom Policies.
+* Provision, network, secure, and remotely administer Amazon EC2 virtual servers.
+* Manage unstructured object storage in Amazon S3, enforce Bucket Policies, and host static web content.
+* Attach an IAM Instance Profile to EC2 to enable keyless authentication against Amazon S3.
 
-* Learn Amazon S3 security and Bucket Policy.
-* Practice IAM Role and AWS CLI.
-* Learn EC2 User Data.
-* Learn Amazon RDS MySQL.
-* Connect EC2 with Amazon RDS.
-* Deploy a simple web application on AWS.
+### Tasks planned for this week:
 
-### Tasks to be carried out this week:
-
-| Day | Task | Start Date | Completion Date | Reference Material |
-| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------------- | ----------------------------------------- |
-| 1 | - Learn Amazon S3 Policy.<br>- Create an S3 Bucket.<br>- Configure Bucket Policy.<br>- Test public access. | 19/04/2026 | 19/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 2 | - Learn IAM Role.<br>- Attach IAM Role to EC2.<br>- Test Amazon S3 access using AWS CLI. | 20/04/2026 | 20/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 3 | - Learn EC2 User Data.<br>- Launch EC2 with User Data.<br>- Install Apache automatically.<br>- Deploy a simple web page. | 21/04/2026 | 21/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 4 | - Configure AWS CLI.<br>- Learn IAM Deny Policy.<br>- Test S3 upload permissions. | 22/04/2026 | 22/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 5 | - Create Amazon RDS MySQL.<br>- Configure Security Group.<br>- Connect EC2 to RDS.<br>- Verify database connection. | 23/04/2026 | 23/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 6 | - Install Apache and PHP.<br>- Connect PHP application to Amazon RDS.<br>- Deploy web application on EC2. | 24/04/2026 | 24/04/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Day | Tasks | Start Date | End Date | Documentation |
+| --- | --- | --- | --- | --- |
+| Mon | - Study IAM Policy JSON document schema (Version, Statement, Effect, Action, Resource, Condition).<br>- Contrast Identity-based Policies, Resource-based Policies, and Permission Boundaries.<br>- Create a `Developers` IAM Group, craft customized least-privilege policies, and verify user boundary enforcement. | 10/08/2026 | 10/08/2026 | https://docs.aws.amazon.com/IAM/latest/UserGuide/ |
+| Tue | - Study the AWS Nitro System virtualization framework and EC2 instance types (General Purpose, Compute/Memory/Storage Optimized).<br>- Generate RSA Key Pairs (`.pem` / `.ppk`), configuring strict permissions via `chmod 400 key.pem`.<br>- Launch an Amazon Linux 2023 EC2 instance (`t3.micro` Free Tier) inside Availability Zone `ap-southeast-1a`. | 11/08/2026 | 11/08/2026 | https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ |
+| Wed | - Configure Security Group rules (Inbound: port 22 SSH restricted to My IP, port 80 HTTP open to 0.0.0.0/0).<br>- Establish an SSH connection: `ssh -i key.pem ec2-user@<public-ip>`.<br>- Execute `dnf update -y`, install the Apache Web Server (`httpd`), author a custom `index.html`, and verify HTTP connectivity via browser. | 12/08/2026 | 12/08/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Thu | - Explore Amazon S3 architecture: Buckets, Object Keys, Metadata, and Storage Classes (Standard, IA, Glacier).<br>- Provision a globally unique S3 Bucket and enable Bucket Versioning for data integrity.<br>- Perform object synchronization operations via AWS CLI: `aws s3 cp`, `aws s3 sync`, and `aws s3 ls`. | 13/08/2026 | 13/08/2026 | https://docs.aws.amazon.com/AmazonS3/latest/userguide/ |
+| Fri | - Disable S3 `Block Public Access`, craft a public read Bucket Policy for `s3:GetObject`.<br>- Enable Static Website Hosting and access web content via the S3 Website Endpoint URL.<br>- Attach an IAM Role with `AmazonS3ReadOnlyAccess` to the EC2 instance and confirm secret-less access via `aws s3 ls` from within the virtual machine. | 14/08/2026 | 14/08/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ### Week 2 Achievements:
-
-* Learned Amazon S3 security:
-  * Bucket Policy.
-  * Block Public Access.
-  * Public access control.
-
-* Practiced IAM Role:
-  * Create IAM Role.
-  * Attach Role to EC2.
-  * Access Amazon S3 using AWS CLI.
-
-* Learned EC2 User Data:
-  * Launch EC2 with User Data.
-  * Install Apache automatically.
-  * Deploy a web page.
-
-* Practiced AWS CLI:
-  * Configure AWS CLI.
-  * Verify IAM User.
-  * Upload files to Amazon S3.
-  * Understand IAM Deny Policy.
-
-* Learned Amazon RDS:
-  * Create MySQL database.
-  * Configure Security Group.
-  * Connect EC2 to RDS.
-  * Verify database connection.
-
-* Deployed a web application:
-  * Install Apache and PHP.
-  * Connect PHP to Amazon RDS.
-  * Access the application through Public IP.
-
-* Improved hands-on experience with Amazon S3, IAM, EC2, AWS CLI and Amazon RDS.
+* **Completion Rate:** 100%.
+* **Theoretical Knowledge:**
+  * Understood RBAC vs ABAC models in AWS IAM, and the critical distinction between permanent user credentials and temporary STS credentials issued to IAM Roles.
+  * Mastered the EC2 Instance lifecycle stages and pricing structures (On-Demand, Spot, Savings Plans).
+  * Grasped Amazon S3 Strong Read-After-Write Consistency.
+* **Practical Skills:**
+  * Configured and hardened an Apache Web Server running on Amazon Linux 2023.
+  * Hosted a resilient static website using Amazon S3 storage infrastructure.
+  * Eliminated long-term credential vulnerabilities by provisioning EC2 IAM Instance Profiles.

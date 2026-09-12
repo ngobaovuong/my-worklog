@@ -1,23 +1,23 @@
 ---
-title: "Event 2 - FCAJ Technical Sharing Meeting"
-date: 2026-06-06
+title: "Event - TechMaker Coffee Talk #01: AI for User Growth & Acquisition"
+date: 2026-07-22
 weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-
-# FCAJ Technical Sharing Meeting
+# TechMaker Coffee Talk #01: AI for User Growth & Acquisition
 
 ## Event Information
 
-| Item | Details |
-|------|---------|
-| **Event Name** | FCAJ Technical Sharing Meeting |
-| **Date** | Saturday, June 6, 2026 |
-| **Time** | FCAJ Weekly Meeting |
-| **Location** | Bitexco Financial Tower, Ho Chi Minh City |
-| **Role** | Attendee |
+| Item           | Details                                                                              |
+| -------------- | ------------------------------------------------------------------------------------ |
+| **Event Name** | TechMaker Coffee Talk #01 – AI for User Growth & Acquisition                         |
+| **Date**       | Wednesday, July 22, 2026                                                             |
+| **Time**       | 09:00 – 11:00 (GMT+7)                                                                |
+| **Location**   | AWS Hanoi – 7th Floor, Grand Terra Tower, 36 Cat Linh, Dong Da District, Hanoi       |
+| **Organizer**  | Vietnam TechMakers (Co-organizers: AWS, UAN; Platinum Sponsor: Techcombank)           |
+| **Role**       | Attendee                                                                             |
 
 ---
 
@@ -25,131 +25,86 @@ pre: " <b> 4.2. </b> "
 
 ## Event Objectives
 
-The FCAJ Technical Sharing Meeting was organized to provide students with practical knowledge about Cloud Computing, Artificial Intelligence, Cybersecurity, Containers, Multiplayer Systems, and career development. The event featured multiple technical presentations delivered by FCAJ members and guest speakers, allowing participants to learn from real projects and industry experiences.
+TechMaker Coffee Talk is a fresh interactive series organized by the Vietnam TechMakers Community with the motto "talk craft over coffee". Eschewing formal one-way slide decks and rigid presentations, the event fosters an open environment where community advisors, core navigators, and members directly ask questions, debate, and exchange hands-on practical experience.
+
+In this inaugural edition, the discussion centered on a highly relevant topic: **How is AI transforming User Growth & Acquisition?** The meetup examined how solo builders, in-house business teams, startup founders, and growth marketers can leverage workflows, automation, and AI agents to achieve sustainable scale without requiring massive operational teams.
 
 ---
 
-## Technical Sessions
+## Speakers & Facilitators
 
-- Machine Learning-based Network Intrusion Detection System (NIDS) on AWS
-- Docker – A Containerization Technology
-- Multiplayer in the Cloud with AWS WebSockets
-- Build GraphRAG using Amazon Bedrock and Amazon Neptune
-- The Art of Effective Teamwork
-- From IT Helpdesk to Senior Sysadmin
+- **Mr. Bui Quang Tinh Tu** – Founder, Envision Nexus | Advisor, Vietnam TechMakers
+- **Mr. Do Tuan Anh** – Senior Manager Data Engineer, Techcombank | Advisor, Vietnam TechMakers
+- **Mr. Jackie Long** – Founder, MyRetail
 
 ---
 
 # Key Highlights
 
-## AWS WAF + Machine Learning for Cyber Attack Detection
+## 1. Redefining Growth & Acquisition in the AI Era
 
-- AWS WAF capabilities and limitations
-- Rule-based vs Machine Learning detection
-- Building an ML-based Network Intrusion Detection System
-- Real-time monitoring dashboard
-- Deploying security solutions on AWS
-- Integrating WAF with NIDS for enhanced threat detection
+- Growth & acquisition are no longer exclusive domains of traditional marketing departments.
+- Complex technical concepts such as automated workflows, event triggers, and autonomous AI agents are becoming mainstream growth levers.
+- Shifting from labor-heavy growth playbooks toward lean, agentic execution loops that optimize conversion funnels continuously.
 
----
+## 2. Demystifying "Vibecode" Beyond Traditional Coding
 
-## Docker Containerization
+- Understanding what Vibecode really is: it is not about memorizing programming syntax, but mastering logical decomposition, natural language prompting, and collaborative engineering alongside AI models.
+- Practical onboarding paths for non-technical individuals, marketers, and business builders.
+- Bridging the perspective gap: helping tech professionals understand marketing requirements and enabling business operators to adopt a builder's mindset.
 
-- Virtualization vs Containerization
-- Docker architecture
-- Docker images and containers
-- Practical Docker demonstration
-- Benefits of container-based deployment
+## 3. "The 3rd Brain" Paradigm and the Future of Work
 
----
-
-## Multiplayer in the Cloud
-
-- Multiplayer networking concepts
-- WebSocket architecture
-- API Gateway WebSocket
-- AWS Lambda integration
-- DynamoDB for connection management
-- Live multiplayer demonstration
-
----
-
-## GraphRAG with Amazon Bedrock & Neptune
-
-- Introduction to Retrieval-Augmented Generation (RAG)
-- GraphRAG concepts
-- Amazon Bedrock Knowledge Bases
-- Amazon Neptune Analytics
-- Relationship-aware AI applications
-
----
-
-## Effective Teamwork
-
-- Four Golden Rules of teamwork
-- Communication and collaboration
-- Personal accountability
-- Digital collaboration tools
-
----
-
-## Career Journey
-
-- IT Helpdesk to System Administrator
-- Cloud mindset
-- DevOps culture
-- Career development roadmap
-- Learning through hands-on projects
+- Deconstructing the multi-brain framework: the biological brain, the digital knowledge store, and the emerging "3rd Brain" powered by collaborative AI agents.
+- How the "3rd Brain" reshapes individual productivity and cognitive workload distribution.
+- Empowering lean teams and solo founders to operate with the capability and reach of larger enterprises.
 
 ---
 
 # Key Takeaways
 
-## Cloud Technologies
+## 1. Integrating AI into Growth Pipelines
 
-- Learned how AWS services can be combined to build secure and scalable cloud applications.
-- Understood practical architectures using API Gateway, Lambda, DynamoDB, Amazon Bedrock, Neptune, and AWS WAF.
+- **Workflows & Automation as the Growth Backbone:** Replacing disconnected manual tasks with integrated pipelines (lead enrichment, segmentation, real-time qualification) drastically reduces time-to-conversion.
+- **Agentic Execution for Personalization:** Autonomous agents enable high-context, hyper-personalized outreach and dynamic A/B test iterations at scale.
+- **Cross-Disciplinary Synergy:** Data engineers gain product intuition on customer acquisition, while growth professionals learn how structured APIs and data architectures empower AI agents.
 
-## Cybersecurity
+## 2. Practical Adoption of Vibecode
 
-- Machine Learning can improve traditional security mechanisms by detecting abnormal behaviors that rule-based systems may miss.
-- Combining AWS WAF with NIDS provides stronger protection against modern cyber attacks.
+- **Logic Over Syntax:** Vibecode removes technical intimidation; success depends on clearly framing problem statements, defining constraints, and guiding AI to generate working solutions.
+- **Rapid Prototyping & Validation:** Non-technical builders can prototype proofs of concept, landing tools, or micro-services within hours instead of waiting weeks for dedicated engineering sprints.
+- **Engineering Discipline Remains Vital:** While prototyping becomes frictionless, long-term stability, system architecture, data integrity, and security still require rigorous verification.
 
-## Software Engineering
+## 3. Leveraging "The 3rd Brain"
 
-- Docker simplifies application deployment and improves development consistency.
-- GraphRAG extends traditional RAG by incorporating graph relationships for more accurate AI reasoning.
-- WebSocket enables real-time communication for multiplayer applications.
-
-## Professional Development
-
-- Effective teamwork depends on communication, shared goals, accountability, and collaboration.
-- Practical projects and continuous learning are essential for career growth in Cloud and DevOps.
+- **Delegating Cognitive Overhead:** The "3rd Brain" serves as an active assistant that gathers intelligence, monitors pipeline metrics, and surfaces actionable optimization experiments.
+- **Focusing on High-Leverage Strategic Work:** Offloading routine data curation allows individuals and teams to invest heavily in brand positioning, empathy-driven messaging, and authentic customer relationships.
 
 ---
 
 # Event Experience
 
-This FCAJ Technical Sharing Meeting provided valuable exposure to multiple cloud computing topics within a single event. Unlike traditional lectures, each presentation focused on practical implementations and real-world projects.
+Attending TechMaker Coffee Talk #01 was a thoroughly engaging and insightful experience. The casual "coffee talk" format effectively broke the ice, encouraging frank and unscripted exchanges between the audience and seasoned industry leaders.
 
-I was particularly interested in the sessions about AWS WAF with Machine Learning and GraphRAG because they demonstrated how modern AWS services can be integrated with Artificial Intelligence to solve real business problems. The Docker presentation also helped me better understand containerization concepts that are widely used in modern cloud-native applications.
+I was especially impressed by the complementary perspectives offered by Mr. Bui Quang Tinh Tu, Mr. Do Tuan Anh, and Mr. Jackie Long. Combining the architectural rigor of enterprise data engineering (Techcombank) with the speed, pragmatism, and growth mechanics of agile ventures provided a balanced roadmap for putting AI into production for acquisition.
 
-Besides gaining technical knowledge, I had opportunities to discuss cloud technologies with other participants, exchange learning experiences, and better understand current industry practices.
+The setting at the AWS Hanoi Office was welcoming and professional, offering great networking opportunities with fellow tech enthusiasts, product builders, and marketers who are actively navigating the shift toward AI-powered operations.
 
 ---
 
 # Lessons Learned
 
-- Security solutions should combine traditional protection with intelligent detection methods.
-- Docker has become an essential technology for modern software deployment.
-- GraphRAG significantly improves knowledge retrieval by leveraging graph relationships.
-- Real-world cloud projects require strong collaboration and communication skills.
-- Continuous learning and participation in technical communities help accelerate professional growth.
+- **Growth is Inherently Cross-Disciplinary:** The boundary separating marketing, software development, and data architecture is dissolving. Future-ready builders must combine behavioral marketing insights with an understanding of automated agent workflows.
+- **Vibecode Democratizes the Builder Mindset:** Execution is no longer constrained by coding fluency. The ability to structure business logic, ask incisive questions, and orchestrate AI systems is becoming the preeminent skill for modern builders.
+- **Human Judgment Anchors the System:** Even as automation and autonomous agents handle data analysis and tactical execution, strategic clarity, nuanced human connection, and trust remain uniquely human responsibilities that drive lasting business impact.
 
 ---
 
 # Event Photos
 
-## Meeting Overview
+## Check-in
 
-![Meeting Overview](/images/meeting-overview.jpg)
+![Check-in at TechMaker Coffee Talk #01](/images/event/event22_7.png)
+![Check-in at TechMaker Coffee Talk #02](/images/event/event22_7_2.png)
+![Check-in at TechMaker Coffee Talk #03](/images/event/event22_7_3.png)
+![Check-in at TechMaker Coffee Talk #04](/images/event/event22_7_4.png)

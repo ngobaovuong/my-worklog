@@ -1,52 +1,35 @@
 ---
-title: "Week 7 Worklog"
-date: 2026-04-12
+title: "Worklog Week 7"
+date: 2026-09-14
 weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
 
 ### Week 7 Objectives:
+* Master containerization fundamentals with Docker (Images, Containers, Layers, Multi-stage builds).
+* Host container artifacts securely using Amazon Elastic Container Registry (Amazon ECR).
+* Learn container orchestration fundamentals with Amazon Elastic Container Service (Amazon ECS).
+* Analyze compute options: ECS EC2 Launch Type vs. serverless AWS Fargate.
+* Build, publish, and deploy a containerized web service on AWS Fargate coupled with an Application Load Balancer.
 
-* Learn Infrastructure as Code (IaC).
-* Learn AWS CloudFormation.
-* Learn Docker fundamentals.
-* Learn Amazon ECS.
-* Learn AWS CodePipeline.
-* Learn CI/CD basics.
+### Tasks planned for this week:
 
-### Tasks to be carried out this week:
-
-| Day | Task | Start Date | Completion Date | Reference Material |
-| --- | -------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------------- | ----------------------------------------- |
-| 1 | - Learn Infrastructure as Code (IaC).<br>- Compare manual deployment with IaC.<br>- Learn infrastructure automation. | 24/05/2026 | 24/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 2 | - Learn AWS CloudFormation.<br>- Review Templates and Stacks.<br>- Learn automated resource deployment. | 25/05/2026 | 25/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 3 | - Practice CloudFormation.<br>- Create and review Stacks.<br>- Learn the Stack update process. | 26/05/2026 | 26/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 4 | - Learn Docker fundamentals.<br>- Review Images and Containers.<br>- Compare Containers with Virtual Machines. | 27/05/2026 | 27/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 5 | - Learn Amazon ECS.<br>- Review Clusters, Services and Task Definitions.<br>- Learn basic container management. | 28/05/2026 | 28/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 6 | - Learn AWS CodePipeline.<br>- Review the CI/CD workflow.<br>- Learn deployment automation concepts. | 29/05/2026 | 29/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 7 | - Review weekly topics.<br>- Summarize CloudFormation, Docker and ECS.<br>- Organize learning notes. | 30/05/2026 | 30/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Day | Tasks | Start Date | End Date | Documentation |
+| --- | --- | --- | --- | --- |
+| Mon | - Review container fundamentals: compare virtual machines (guest OS hypervisors) with lightweight container isolation (shared Linux kernel).<br>- Author an optimized Dockerfile packaging a Node.js/Python web application utilizing an `alpine` base image.<br>- Build and validate containers locally: `docker build -t web-app:v1 .` and `docker run -d -p 8080:80 web-app:v1`. | 14/09/2026 | 14/09/2026 | https://docs.docker.com/get-started/ |
+| Tue | - Explore Amazon Elastic Container Registry (ECR) for secure image lifecycle management.<br>- Create a private ECR repository named `cloud-demo-app` with Image Scanning on push enabled.<br>- Authenticate Docker CLI against ECR: `aws ecr get-login-password \| docker login ...`.<br>- Tag and push the application container image to the ECR registry. | 15/09/2026 | 15/09/2026 | https://docs.aws.amazon.com/AmazonECR/latest/userguide/ |
+| Wed | - Study AWS ECS architecture: Clusters, Task Definitions, Services, and Tasks.<br>- Contrast ECS on EC2 (managing underlying cluster instances) with AWS Fargate (fully serverless container compute).<br>- Distinguish the two ECS IAM roles: Task Execution Role (pulling images from ECR, pushing logs) vs Task Role (application runtime access to AWS APIs). | 16/09/2026 | 16/09/2026 | https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ |
+| Thu | - Author an ECS Task Definition: set launch type compatibility to `FARGATE`, assign 0.5 vCPU and 1 GB memory, specify ECR image URI.<br>- Configure the `awslogs` log driver to stream container stdout/stderr into CloudWatch Log Groups.<br>- Provision a dedicated ECS Fargate Cluster. | 17/09/2026 | 17/09/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Fri | - Create an ECS Service: configure Desired Tasks = 2 using the `awsvpc` network mode across VPC subnets.<br>- Restrict container Security Groups strictly to inbound HTTP traffic.<br>- Connect the ECS Service to an Application Load Balancer Target Group.<br>- Validate task health, query the application over the ALB DNS name, and document Week 7 results. | 18/09/2026 | 18/09/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ### Week 7 Achievements:
-
-* Learned the basics of Infrastructure as Code (IaC):
-  * Understood the purpose of infrastructure automation.
-  * Compared manual deployment with IaC.
-
-* Explored AWS CloudFormation:
-  * Learned Templates and Stacks.
-  * Reviewed the basic deployment process.
-
-* Learned Docker fundamentals:
-  * Understood Docker Images and Containers.
-  * Compared Containers with Virtual Machines.
-
-* Became familiar with Amazon ECS:
-  * Learned Clusters, Services and Task Definitions.
-  * Reviewed the basic ECS architecture.
-
-* Learned the basics of AWS CodePipeline:
-  * Understood the CI/CD workflow.
-  * Learned the stages of a deployment pipeline.
-
-* Improved understanding of Infrastructure as Code, containers and basic DevOps practices on AWS.
+* **Completion Rate:** 100%.
+* **Theoretical Knowledge:**
+  * Understood the end-to-end containerized application lifecycle.
+  * Evaluated the operational benefits of serverless container orchestration via AWS Fargate.
+  * Mastered the `awsvpc` networking mode where each task receives its own dedicated Elastic Network Interface (ENI).
+* **Practical Skills:**
+  * Packaged and hardened lightweight production-grade Docker images.
+  * Managed secure image registries and vulnerability scanning in Amazon ECR.
+  * Deployed a production-ready, auto-recovering containerized web service on AWS ECS Fargate.

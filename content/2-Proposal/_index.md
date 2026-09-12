@@ -1,129 +1,131 @@
 ---
 title: "Proposal"
-date: 2026-01-01
+date: 2026-09-25
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
 
-# Second-Hand Marketplace
+# AWS Media Vault
 
-## A Cloud-Native Second-Hand Marketplace on AWS
+## Serverless Media Storage & Monitoring Platform on AWS
 
 ---
 
 # 1. Executive Summary
 
-Second-Hand Marketplace is a cloud-based web application that enables users to buy and sell second-hand products through a centralized online marketplace. The platform provides user authentication, product management, category management, image uploading, product searching, shopping cart, checkout, and order management while utilizing AWS managed services to ensure scalability, availability, security, and simplified deployment.
+AWS Media Vault is a cloud-native, serverless solution designed to provide secure, automated storage, processing, and retrieval of rich media files (images and videos). The platform delivers an intuitive web portal, automated metadata extraction, audit log persistence, real-time email alerting, and operational error tracking—relying entirely on AWS managed services to minimize costs, guarantee high availability, and eliminate server maintenance overhead.
 
-The application is developed using **Node.js**, **Express.js**, **MongoDB Atlas**, and **EJS**. The application is containerized using **Docker** and deployed on **Amazon ECS Fargate** behind an **Application Load Balancer (ALB)**. Docker images are stored in **Amazon ECR**, uploaded product images are stored in **Amazon S3**, and **AWS CodeBuild** automatically builds and deploys the latest application whenever new source code is pushed to GitHub.
+The client-side interface is built with **HTML5**, **JavaScript (ES6+)**, and **CSS3**, hosted statically on **Amazon S3 (Static Website Hosting)**. The frontend securely interfaces with cloud infrastructure via **Amazon API Gateway** and **AWS Lambda** utilizing **S3 Presigned URLs**, allowing users to upload data directly to private storage buckets without exposing AWS credentials or requiring public bucket permissions.
 
-The deployment environment also utilizes **Amazon Route 53** for domain management, **AWS Certificate Manager (ACM)** for HTTPS encryption, **Amazon CloudWatch** for monitoring, **AWS IAM** for access control, and **Amazon VPC** for secure networking. The architecture provides automated deployment, centralized storage, simplified management, and a scalable cloud infrastructure suitable for small and medium-sized e-commerce applications.
+The backend infrastructure leverages **AWS Lambda** (Python 3.12) as an event-driven compute engine. Object metadata is synchronized into **Amazon DynamoDB**, detailed processing reports are published via **Amazon SNS** to administrative inboxes, execution metrics and diagnostic logs are collected by **Amazon CloudWatch**, and access boundaries are enforced through **AWS IAM** following the principle of least privilege. This architecture delivers an automated, highly secure, zero-idle-cost media pipeline built for instant scalability.
 
 ---
 
 # 2. Problem Statement
 
-## Current Problem
+## Current Challenges
 
-Many second-hand marketplaces rely on social media platforms or manually managed websites, making product management inefficient and difficult to maintain. Product images are often stored locally, deployments require manual updates, and scaling the application becomes increasingly difficult as the number of users grows.
+Traditional media storage and management applications typically rely on persistent virtual instances (such as Amazon EC2 or conventional VPS), introducing notable architectural drawbacks:
 
-Traditional deployment methods also increase downtime, require additional operational effort, and make application maintenance more complicated whenever new features or bug fixes are released.
+- **Idle Resource Costs:** Servers must operate and incur billing 24/7 regardless of actual upload traffic.
+- **Storage Security Vulnerabilities:** Enabling uploads frequently leads administrators to grant public bucket access or hardcode AWS Access Keys into frontend source code.
+- **Compute Bottlenecks:** Web servers act as intermediary proxies for bulky media uploads, resulting in heavy memory and CPU contention.
+- **Lack of Real-time Visibility:** Administrators lack immediate notifications when critical files are processed or when processing pipelines experience failure.
 
-## Solution
+## Proposed Solution
 
-The proposed solution develops a cloud-native second-hand marketplace platform using AWS managed services.
+The proposed solution implements a fully serverless, event-driven architecture using managed AWS services:
 
-Users can register accounts, log in securely, upload products with images, browse products by category, search products, manage shopping carts, place orders, and manage their own product listings through a web application.
+- Users access a responsive web portal served via **Amazon S3 Website Hosting** to initiate secure upload and download requests.
+- **Amazon API Gateway** receives client requests and triggers **AWS Lambda** to generate time-limited **S3 Presigned URLs**, enabling direct upload into private **Amazon S3 Data Buckets**.
+- An `s3:ObjectCreated:*` event automatically triggers Lambda to extract object metadata, persist audit logs to **Amazon DynamoDB**, and dispatch formatted notifications via **Amazon SNS**.
+- Pipeline execution health and error metrics are continually tracked by **Amazon CloudWatch Metric Filters & Alarms**.
 
-Application data is stored in **MongoDB Atlas**, while uploaded product images are stored in **Amazon S3**.
+## Key Benefits
 
-The application is containerized using Docker and deployed on **Amazon ECS Fargate**. Whenever source code is pushed to GitHub, **AWS CodeBuild** automatically builds a Docker image, pushes it to **Amazon ECR**, and deploys the latest version to Amazon ECS.
+The proposed architecture delivers substantial technical and business advantages:
 
-HTTPS communication is secured using **AWS Certificate Manager (ACM)** and the application is accessible through a custom domain configured using **Amazon Route 53**.
-
-## Benefits
-
-The proposed architecture provides several benefits:
-
-- Simplified application deployment.
-- Automated CI/CD pipeline.
-- Scalable cloud infrastructure.
-- Secure HTTPS communication.
-- Reliable cloud storage.
-- Simplified application maintenance.
-- Reduced operational effort.
-- Easy future scalability.
+- **Zero Idle Cost:** Billing is strictly tied to millisecond compute intervals and actual transactions within the AWS Free Tier.
+- **Robust Security Posture:** Private data buckets block all public access; data exchange relies entirely on ephemeral digital signatures.
+- **Effortless Scalability:** Decoupled serverless services scale seamlessly from a single file to millions of concurrent requests.
+- **Operational Simplicity:** Eliminates operating system patching, complex network topology maintenance, and server management.
+- **End-to-End Observability:** Transparent structured logging and automated email alerts on operational failures.
 
 ---
 
 # 3. Solution Architecture
 
-The application follows a cloud-native container architecture deployed on AWS managed services.
+The solution implements an event-driven serverless architecture, cleanly separating static frontend distribution from dynamic backend event processing.
 
-## Solution Architecture
+## Architecture Diagram
 
 ![System Architecture](/images/2-Proposal/system_architecture.png)
 
 ## AWS Services Utilized
 
-- Amazon VPC
-- AWS IAM
-- Amazon ECS Fargate
-- Amazon ECR
-- Amazon S3
-- Application Load Balancer (ALB)
-- Amazon Route 53
-- AWS Certificate Manager (ACM)
-- AWS CodeBuild
-- Amazon CloudWatch
-- MongoDB Atlas
+- **Amazon S3 (Hosting Bucket):** Static web hosting for frontend client files.
+- **Amazon S3 (Data Bucket):** Secure, private storage for uploaded media objects.
+- **Amazon API Gateway:** Managed REST API endpoint handling client-to-cloud requests.
+- **AWS Lambda:** Serverless compute generating presigned URLs and handling S3 events.
+- **Amazon DynamoDB:** Managed NoSQL database storing media metadata and audit trails.
+- **Amazon SNS (Simple Notification Service):** Pub/Sub alerting engine dispatching email updates.
+- **Amazon CloudWatch:** Comprehensive log aggregation, operational metrics, and error alarms.
+- **AWS IAM:** Identity and fine-grained access control enforcing Least Privilege.
 
 ## Component Design
 
 ### Frontend
 
-- HTML
-- CSS
-- JavaScript
-- EJS Template Engine
+- HTML5 / CSS3
+- Vanilla JavaScript (Fetch API, ES6+)
+- Hosted on S3 Static Website Hosting
 
-### Backend
+### Backend & API Layer
 
-- Node.js
-- Express.js
-- Express Session
-- Multer
-- AWS SDK for JavaScript
+- Amazon API Gateway (REST API, CORS Enabled)
+- AWS Lambda (Python 3.12 Runtime)
+- AWS SDK for Python (Boto3)
 
-### Database
+### Database Layer
 
-- MongoDB Atlas
+- Amazon DynamoDB (On-Demand / Provisioned Capacity)
 
-### Image Storage
+### Storage Layer
 
-- Amazon S3
+- Amazon S3 Standard (CORS Enabled, SigV4 Signature Version)
 
-### Container Platform
+### Monitoring & Notification Layer
 
-- Docker
-- Amazon ECS Fargate
+- Amazon SNS Topic (Email Protocol)
+- Amazon CloudWatch Log Groups
+- Amazon CloudWatch Alarm (Metric `Errors` $\ge 1$)
 
-### Deployment Pipeline
+### Data Flow Workflow
 
-GitHub
+Web Browser
 
-↓
+↓ *(1. Request Presigned URL via REST API)*
 
-AWS CodeBuild
+Amazon API Gateway
 
-↓
+↓ *(2. Invoke function for ephemeral credentials)*
 
-Amazon ECR
+AWS Lambda
 
-↓
+↓ *(3. Direct HTTP PUT upload)*
 
-Amazon ECS Fargate
+Amazon S3 (Data Bucket)
+
+↓ *(4. Emit s3:ObjectCreated event)*
+
+AWS Lambda
+
+├── *(5a. Persist Metadata)* ──> Amazon DynamoDB
+
+├── *(5b. Dispatch Notifications)* ──> Amazon SNS ──> Admin Inbox
+
+└── *(5c. Export Diagnostics)* ──> Amazon CloudWatch
 
 ---
 
@@ -131,142 +133,126 @@ Amazon ECS Fargate
 
 ## Implementation Phases
 
-The project was implemented through the following phases:
+The project was executed through the following structured milestones:
 
-- Research AWS cloud architecture and deployment strategy.
-- Design the overall marketplace system architecture.
-- Develop the backend using Node.js and Express.js.
-- Configure MongoDB Atlas for cloud database storage.
-- Integrate Amazon S3 for product image storage.
-- Containerize the application using Docker.
-- Push Docker images to Amazon ECR.
-- Deploy Docker containers on Amazon ECS Fargate.
-- Configure Application Load Balancer.
-- Configure Amazon Route 53 and AWS Certificate Manager (ACM).
-- Configure AWS CodeBuild for automated build and deployment.
-- Monitor the application using Amazon CloudWatch.
-- Perform system testing and deploy the production environment.
+- Researched event-driven serverless design patterns and AWS Well-Architected standards.
+- Designed system architecture and end-to-end data flow specifications.
+- Provisioned private S3 data buckets and established Cross-Origin Resource Sharing (CORS) rules.
+- Created the NoSQL data schema on Amazon DynamoDB.
+- Configured the Amazon SNS alerting topic and confirmed email subscriptions.
+- Authored fine-grained IAM execution policies adhering strictly to least privilege access.
+- Implemented multi-purpose Lambda handlers in Python 3.12 for API Gateway integration and S3 event routing.
+- Deployed Amazon API Gateway REST endpoints with custom CORS definitions to the `prod` stage.
+- Built a lightweight web interface and deployed static assets via S3 Website Hosting.
+- Created CloudWatch Log Groups and established proactive alarm thresholds.
+- Conducted comprehensive functional testing (Happy Path, Error Scenarios, Fault Injection).
+- Validated cost controls and compiled complete resource clean-up procedures.
 
 ## Technical Requirements
 
 ### Programming Languages
 
-- JavaScript
-- HTML
-- CSS
+- Python 3.12
+- JavaScript (Vanilla ES6)
+- HTML5 / CSS3
 
-### Frameworks
+### Core Libraries & SDKs
 
-- Express.js
-- EJS
+- Boto3 (AWS SDK for Python)
+- Botocore (Config Signature Version S3v4)
+- Postman / cURL (API Testing)
 
-### Database
+### Cloud Infrastructure (AWS)
 
-- MongoDB Atlas
-
-### Cloud Services
-
-- Amazon VPC
-- AWS IAM
-- Amazon ECS Fargate
-- Amazon ECR
 - Amazon S3
-- Application Load Balancer (ALB)
-- Amazon Route 53
-- AWS Certificate Manager (ACM)
-- AWS CodeBuild
+- Amazon API Gateway
+- AWS Lambda
+- Amazon DynamoDB
+- Amazon SNS
 - Amazon CloudWatch
+- AWS IAM
 
 ### Development Tools
 
 - Visual Studio Code
-- Git
-- GitHub
-- Docker Desktop
-- MongoDB Compass
----
-
-# 5. Roadmap & Milestones
-
-The project was completed through the following implementation phases.
-
-### Phase 1 – Project Planning
-
-- Analyze system requirements.
-- Design the overall system architecture.
-- Design the MongoDB database structure.
-- Prepare the development environment.
-
-### Phase 2 – Application Development
-
-- Develop user authentication.
-- Develop customer functions.
-- Develop shop management functions.
-- Develop administrator functions.
-- Develop product management.
-- Develop order management.
-
-### Phase 3 – Cloud Integration
-
-- Configure MongoDB Atlas.
-- Integrate Amazon S3 for image storage.
-- Test cloud storage connectivity.
-
-### Phase 4 – Containerization
-
-- Create Dockerfile.
-- Build Docker Image.
-- Test the Docker container locally.
-
-### Phase 5 – AWS Deployment
-
-- Push Docker Image to Amazon ECR.
-- Deploy the application to Amazon ECS Fargate.
-- Configure Application Load Balancer.
-- Configure Amazon Route 53.
-- Configure AWS Certificate Manager (ACM).
-
-### Phase 6 – CI/CD
-
-- Connect GitHub repository.
-- Configure AWS CodeBuild.
-- Automate application deployment.
-
-### Phase 7 – Monitoring & Testing
-
-- Configure Amazon CloudWatch.
-- Perform functional testing.
-- Verify application deployment.
-- Fix deployment issues.
-
-### Phase 8 – Project Completion
-
-- Deploy the production environment.
-- Complete documentation.
-- Demonstrate the completed project.
+- Git & GitHub
+- AWS Management Console
+- Draw.io / Excalidraw
 
 ---
 
-# 6. Budget Estimation
+# 5. Project Roadmap & Milestones
 
-## Infrastructure Cost Estimate
+The project was delivered across the following structured timeline:
 
-| Service | Estimated Cost |
-|----------|----------------|
-| Amazon ECS Fargate | ~$0.25/month |
-| Amazon S3 (Storage & Requests) | ~$0.15/month |
-| Amazon ECR | ~$0.03/month |
-| AWS CodeBuild | ~$0.05/month |
-| Application Load Balancer | ~$0.10/month |
-| Amazon CloudWatch | ~$0.02/month |
-| **Total Estimate** | **~$0.60 USD/month** |
+### Phase 1 – Architecture & Planning
 
-### Cost Control Guidelines
+- Analyzed serverless processing requirements and edge cases.
+- Drafted system architecture diagrams and operational workflows.
+- Defined the IAM least-privilege matrix across all services.
 
-- **AWS Budgets:** Automated alerts when costs exceed **$5.00** and **$10.00**.
-- **Amazon ECR Lifecycle Policy:** Automatically remove unused Docker images.
-- **AWS CodeBuild:** Trigger builds only when code is pushed to the GitHub repository.
-- **Post-demo Cleanup:** Remove ECS services, ECR images, unused S3 objects, Application Load Balancer, CloudWatch alarms, ACM certificates, and Route 53 hosted zones after project completion to avoid unnecessary charges.
+### Phase 2 – Backend Core Infrastructure
+
+- Created the S3 Data Bucket with granular CORS rules.
+- Provisioned the `MediaMetadata` DynamoDB table with `FileId` partition key.
+- Created the `MediaProcessingAlerts` SNS topic and verified subscriber subscriptions.
+
+### Phase 3 – Compute Engine Development
+
+- Configured the IAM Lambda execution role, ensuring no restrictive boundary conflicts.
+- Authored the dual-action Lambda function (Presigned URL generator & S3 event handler).
+- Executed unit tests in the AWS Lambda console using synthetic `s3-put` events.
+
+### Phase 4 – API & Web Portal Integration
+
+- Built the REST API Gateway endpoint `/media` with `ANY` method support.
+- Enabled CORS across methods and deployed the API to the `prod` stage.
+- Developed `index.html` featuring asynchronous upload and download functionality.
+- Published web assets through S3 Static Website Hosting.
+
+### Phase 5 – Monitoring & Observability
+
+- Attached `AWSLambdaBasicExecutionRole` for automated CloudWatch Log Group creation.
+- Configured a CloudWatch Alarm evaluating Lambda `Errors` ($\ge 1$ threshold).
+- Connected alarm trigger actions to the designated SNS Topic.
+
+### Phase 6 – Verification & Fault Injection Testing
+
+- Validated successful upload flows: Client $\rightarrow$ S3 $\rightarrow$ DynamoDB $\rightarrow$ SNS email delivery.
+- Conducted fault-injection tests (revoking permissions) to verify CloudWatch alarms and email alerts.
+- Verified download functionality via 5-minute expiring Presigned GET URLs.
+
+### Phase 7 – Final Documentation & Packaging
+
+- Authored bilingual (VI/EN) technical workshop documentation.
+- Packaged complete source code, IAM templates, and assets to GitHub.
+- Finalized project summary presentation.
+
+---
+
+# 6. Cost Estimation
+
+## Infrastructure Cost Analysis
+
+The solution is architected entirely on serverless primitives, falling fully within the **AWS Free Tier**:
+
+| AWS Service | Free Tier Allowance | Anticipated Monthly Usage | Estimated Cost |
+|---|---|---|---|
+| **Amazon S3** | 5 GB Standard Storage, 20,000 GET, 2,000 PUT | ~200 MB, ~500 requests | $0.00 / month |
+| **AWS Lambda** | 1,000,000 free requests, 3.2M sec compute | ~1,000 invocations | $0.00 / month |
+| **Amazon API Gateway** | 1,000,000 REST API calls/month (First 12 mo.) | ~1,500 calls | $0.00 / month |
+| **Amazon DynamoDB** | 25 GB storage, 25 WCU / 25 RCU capacity | < 10 MB, 5 WCU / 5 RCU | $0.00 / month |
+| **Amazon SNS** | 1,000 email notifications/month | ~100 emails | $0.00 / month |
+| **Amazon CloudWatch** | 10 custom metrics, 10 alarms, 5 GB log data | 1 Alarm, 1 Log Group (~50 MB) | $0.00 / month |
+| **AWS IAM** | Free service tier | Unlimited roles/policies | $0.00 / month |
+| **Total Estimated Cost** | | | **~$0.00 / month** |
+
+### Cost Optimization Guidelines
+
+- **AWS Budgets:** Configured zero-spend threshold alarms notifying administrators if expenses exceed **$1.00**.
+- **Presigned URL Expiry:** Configured tight token lifetimes (**300 seconds / 5 minutes**) to prevent unauthorized link reuse.
+- **S3 Lifecycle Rules:** Configured automated lifecycle policies transitioning demo objects or purging temporary files after 7 days.
+- **Clean-up Procedures:** Detailed resource tear-down scripts provided to delete test buckets, API definitions, tables, alarms, and functions upon evaluation completion.
 
 ---
 
@@ -274,56 +260,51 @@ The project was completed through the following implementation phases.
 
 ## Risk Matrix
 
-- Amazon ECS deployment failure.
-- MongoDB Atlas connectivity issues.
-- Amazon S3 upload failures.
-- AWS CodeBuild build failures.
-- Route 53 DNS configuration issues.
-- HTTPS certificate configuration issues.
-- Unexpected AWS service charges.
+- IAM Access Denied errors stemming from unintentional Permissions Boundary constraints.
+- Browser CORS failures during preflight OPTIONS requests to API Gateway or S3.
+- Recursive Lambda invocations if output files write back to the event trigger bucket prefix.
+- Accidental credential exposure within frontend application scripts.
+- Silent execution failures due to missing CloudWatch logging permissions.
+- Uncontrolled budget spikes caused by large payload abuse.
 
 ## Mitigation Strategies
 
-- Enable Amazon CloudWatch monitoring.
-- Configure AWS Budgets alerts.
-- Version Docker images using Amazon ECR.
-- Perform regular MongoDB Atlas backups.
-- Apply IAM least privilege policies.
-- Verify Route 53 DNS records before deployment.
-- Validate ACM certificate status before enabling HTTPS.
+- Audited IAM roles to remove unnecessary boundaries and enforce strict least-privilege scoping.
+- Standardized CORS configurations across API Gateway resources and S3 bucket definitions.
+- Isolated static hosting buckets completely from data storage buckets to eliminate invocation loops.
+- Adopted transient Presigned URLs generated server-side, eliminating long-term credentials in clients.
+- Attached `AWSLambdaBasicExecutionRole` explicitly to guarantee continuous log streaming.
+- Enforced client-side payload validation and enabled CloudWatch billing threshold notifications.
 
 ## Contingency Plans
 
-- Roll back to the previous Docker image.
-- Redeploy the previous Amazon ECS Task Definition.
-- Restore MongoDB Atlas backups.
-- Redeploy through AWS CodeBuild.
-- Reconfigure Route 53 DNS records if necessary.
-- Reissue the ACM certificate when validation fails.
+- **Permission Denials:** Inspect CloudWatch Log Streams or execute local Lambda mock tests to parse explicit `AccessDeniedException` error traces.
+- **API Connectivity Failures:** Run direct cURL requests against API endpoints to isolate frontend CORS issues from backend logic errors.
+- **Alarm Triggers:** Access `/aws/lambda/process-media-metadata` log groups immediately to evaluate stack traces and deploy hotfixes.
+- **Unhandled Exceptions:** Implement defensive `try...except` exception blocks and route formatted error diagnostics directly via SNS.
 
 ---
 
-# 8. Expected Results
+# 8. Expected Outcomes
 
-## Technical Results
+## Technical Deliverables
 
-The completed project will provide:
+Upon completion, the project delivers:
 
-- A fully containerized cloud-native second-hand marketplace platform.
-- Automatic CI/CD deployment using GitHub and AWS CodeBuild.
-- Reliable image storage using Amazon S3.
-- Scalable container deployment using Amazon ECS Fargate.
-- Secure HTTPS communication using AWS Certificate Manager (ACM).
-- Custom domain management using Amazon Route 53.
-- Load balancing using Application Load Balancer.
-- Centralized cloud database using MongoDB Atlas.
-- Resource monitoring using Amazon CloudWatch.
-- Secure access management using AWS IAM.
+- A functional, responsive web portal supporting direct media upload and secure file retrieval.
+- A 100% serverless, event-driven data processing pipeline requiring zero server maintenance.
+- Secure, short-lived S3 Presigned URL data transfers signed with AWS SigV4.
+- Centralized metadata logging inside a scalable DynamoDB NoSQL table.
+- An automated real-time notification engine dispatching structured media summaries via Amazon SNS.
+- Continuous observability powered by CloudWatch Log Groups, metrics, and error alarms.
+- Comprehensive, bilingual workshop documentation enabling end-to-end reproducibility.
 
 ## Business Value
 
-The project demonstrates the practical implementation of cloud computing, containerization, and DevOps practices using AWS managed services.
+The project demonstrates practical implementation of key pillars from the AWS Well-Architected Framework:
 
-The cloud-native architecture simplifies deployment, reduces operational effort, improves scalability, and provides a reliable foundation for future expansion.
+- **Cost Optimization:** Achieved 100% elimination of idle infrastructure costs compared to conventional server deployments.
+- **Operational Excellence:** Fully automated end-to-end lifecycle from upload ingestion to operational failure alerting.
+- **Security & Reliability:** Zero public data access, least-privilege role scoping, and high durability backed by Amazon S3's 99.999999999% (11 9's) architecture.
 
-Future enhancements may include online payment integration, recommendation systems, notification services, analytics dashboards, and microservice-based architecture while maintaining high availability and operational efficiency.
+Future enhancements may introduce **AWS Rekognition** for automated content moderation and computer vision labeling, **Amazon CloudFront** for global edge caching, and **Amazon Cognito** for multi-tenant user authentication.

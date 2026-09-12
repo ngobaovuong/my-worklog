@@ -1,32 +1,31 @@
 ---
 title: "Workshop"
-date: 2026-01-01
+date: 2026-09-25
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
 
-# Deploying the Second-Hand Marketplace on AWS
+# Deploying AWS Media Vault on AWS
 
 #### Overview
 
-In this workshop, we will build and deploy the **Second-Hand Marketplace** using a cloud-native architecture on AWS.
+In this hands-on workshop, we will architect, build, and deploy **AWS Media Vault** — an automated, cloud-native serverless media processing, storage, and incident alert platform on AWS.
 
-The solution leverages AWS managed services including **Amazon ECS Fargate**, **Amazon ECR**, **Amazon S3**, **AWS CodeBuild**, **Application Load Balancer**, **Amazon CloudWatch**, **Amazon Route 53**, and **AWS Certificate Manager (ACM)**, integrated with **MongoDB Atlas** to provide a scalable, secure, highly available, and automated deployment platform.
+The architecture integrates 7 core AWS services: **Amazon S3** (Private Object Storage & Static Web Hosting), **AWS Lambda** (Serverless Compute), **Amazon API Gateway** (Managed REST API with CORS), **Amazon DynamoDB** (High-performance NoSQL Metadata Store), **Amazon SNS** (Push Notification Engine), **Amazon CloudWatch** (Log Analytics, Metrics & Proactive Alarms), and **AWS IAM** (Identity and Least-Privilege Access Management).
 
-Throughout this workshop, you will prepare the project environment, configure networking, containerize the application using Docker, deploy it to Amazon ECS Fargate, configure a custom domain with HTTPS, automate deployment using AWS CodeBuild, monitor system health, perform end-to-end testing, and finally clean up all AWS resources.
+Throughout this practical workshop, you will be guided step-by-step through configuring IAM permissions, provisioning backend storage, scripting dual-purpose Lambda compute functions, wiring API Gateway with S3 Presigned URLs, hosting a frontend on S3, establishing operational observability, executing fault-injection tests, and cleanly tearing down resources.
 
-#### Content
+#### Table of Contents
 
 1. [Workshop Overview](5.1-Workshop-overview/)
-2. [Prerequisite](5.2-Prerequisite/)
-3. [Project Foundation](5.3-Project-foundation/)
-4. [Networking](5.4-Networking/)
-5. [Application Services](5.5-Application-Services/)
-6. [Containerization](5.6-Containerization/)
-7. [Deploy Application](5.7-Deploy-Application/)
-8. [Domain and HTTPS](5.8-Domain-and-HTTPS/)
-9. [CI/CD](5.9-CICD/)
-10. [Monitoring](5.10-Monitoring/)
-11. [Testing](5.11-Testing/)
-12. [Cleanup](5.12-Cleanup/)
+2. [Prerequisites](5.2-Prerequisite/)
+3. [IAM Security Configuration](5.3-IAM-Setup/)
+4. [Storage & Database Setup](5.4-Storage-Database/)
+5. [SNS Notification Setup](5.5-SNS-Notification/)
+6. [Compute Logic with AWS Lambda](5.6-Lambda-Compute/)
+7. [API Gateway Integration](5.7-API-Gateway/)
+8. [Static Web Hosting on S3](5.8-Web-Hosting/)
+9. [Monitoring & Alarms with CloudWatch](5.9-Monitoring/)
+10. [System Testing & Fault Injection](5.10-Testing/)
+11. [Resource Cleanup](5.11-Cleanup/)

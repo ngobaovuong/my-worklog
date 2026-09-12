@@ -1,63 +1,35 @@
 ---
 title: "Worklog Tuần 2"
-date: 2026-04-12
+date: 2026-08-10
 weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
 
 ### Mục tiêu tuần 2:
+* Nghiên cứu chuyên sâu và thực hành nhóm dịch vụ cốt lõi: AWS IAM, Amazon EC2 và Amazon S3.
+* Quản lý phân quyền danh tính theo nguyên tắc đặc quyền tối thiểu (Least Privilege) qua IAM Users, Groups, Roles và Policies.
+* Khởi tạo, cấu hình mạng, thiết lập Security Group và quản trị từ xa máy chủ ảo Amazon EC2.
+* Lưu trữ đối tượng với Amazon S3, quản lý vòng đời dữ liệu, phân quyền bảo mật Bucket Policy và cấu hình hosting website tĩnh.
+* Kết hợp IAM Instance Profile với EC2 để truy cập S3 mà không lưu trữ cứng thông tin xác thực (Access Keys).
 
-* Tìm hiểu bảo mật Amazon S3 và Bucket Policy.
-* Thực hành IAM Role và AWS CLI.
-* Tìm hiểu EC2 User Data.
-* Tìm hiểu Amazon RDS MySQL.
-* Kết nối EC2 với Amazon RDS.
-* Triển khai ứng dụng web đơn giản trên AWS.
-
-### Các công việc cần triển khai trong tuần này:
+### Các công việc triển khai trong tuần:
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------ | --------------- | ----------------------------------------- |
-| 2 | - Tìm hiểu Amazon S3 Policy.<br>- Tạo S3 Bucket.<br>- Cấu hình Bucket Policy.<br>- Kiểm tra truy cập công khai. | 19/04/2026 | 19/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 3 | - Tìm hiểu IAM Role.<br>- Gán IAM Role cho EC2.<br>- Kiểm tra truy cập Amazon S3 bằng AWS CLI. | 20/04/2026 | 20/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 4 | - Tìm hiểu EC2 User Data.<br>- Khởi tạo EC2 với User Data.<br>- Tự động cài Apache.<br>- Triển khai trang web đơn giản. | 21/04/2026 | 21/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 5 | - Cấu hình AWS CLI.<br>- Tìm hiểu IAM Deny Policy.<br>- Kiểm tra quyền tải tệp lên Amazon S3. | 22/04/2026 | 22/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 6 | - Tạo Amazon RDS MySQL.<br>- Cấu hình Security Group.<br>- Kết nối EC2 với RDS.<br>- Kiểm tra kết nối cơ sở dữ liệu. | 23/04/2026 | 23/04/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 7 | - Cài đặt Apache và PHP.<br>- Kết nối ứng dụng PHP với Amazon RDS.<br>- Triển khai ứng dụng web trên EC2. | 24/04/2026 | 24/04/2026 | https://cloudjourney.awsstudygroup.com/ |
+| --- | --- | --- | --- | --- |
+| 2 | - Nghiên cứu cấu trúc tài liệu IAM Policy dạng JSON (Version, Statement, Effect, Action, Resource, Condition).<br>- Phân biệt Identity-based Policy, Resource-based Policy và Permission Boundary.<br>- Tạo IAM Group `Developers`, gắn các Policy tùy biến có giới hạn dịch vụ và kiểm tra phân quyền người dùng. | 10/08/2026 | 10/08/2026 | https://docs.aws.amazon.com/IAM/latest/UserGuide/ |
+| 3 | - Tìm hiểu cơ chế ảo hóa Nitro System của AWS, các nhóm instance EC2 (General Purpose, Compute, Memory, Storage Optimized).<br>- Tạo Key Pair (loại RSA, format `.pem` và `.ppk`), phân quyền tệp `chmod 400 key.pem`.<br>- Khởi tạo một máy ảo EC2 chạy Amazon Linux 2023 (`t3.micro` thuộc Free Tier) tại Availability Zone `ap-southeast-1a`. | 11/08/2026 | 11/08/2026 | https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ |
+| 4 | - Cấu hình Security Group (Inbound rules: mở port 22 cho SSH từ My IP, port 80 cho HTTP từ 0.0.0.0/0).<br>- Kết nối vào máy ảo qua SSH terminal: `ssh -i key.pem ec2-user@<public-ip>`.<br>- Cập nhật hệ thống bằng `dnf update -y`, cài đặt Apache Web Server (`httpd`), tạo trang `index.html` tùy biến và kiểm tra truy cập HTTP qua trình duyệt. | 12/08/2026 | 12/08/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 5 | - Nghiên cứu dịch vụ lưu trữ đối tượng Amazon S3: khái niệm Bucket, Object Key, Metadata, Storage Classes (Standard, Infrequent Access, Glacier).<br>- Tạo S3 Bucket với tên duy nhất toàn cầu (Globally Unique Name), bật tính năng Bucket Versioning.<br>- Sử dụng AWS CLI để đồng bộ và thao tác tệp: `aws s3 cp`, `aws s3 sync`, `aws s3 ls`. | 13/08/2026 | 13/08/2026 | https://docs.aws.amazon.com/AmazonS3/latest/userguide/ |
+| 6 | - Tắt cấu hình `Block Public Access` của S3, soạn thảo Bucket Policy cấp quyền `s3:GetObject` công khai cho anonymous user.<br>- Kích hoạt tính năng Static Website Hosting và truy cập web qua S3 Endpoint URL.<br>- Tạo IAM Role với quyền `AmazonS3ReadOnlyAccess`, gán Instance Profile vào EC2 và kiểm tra câu lệnh `aws s3 ls` trực tiếp từ trong máy chủ mà không cần config access keys. | 14/08/2026 | 14/08/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ### Kết quả đạt được tuần 2:
-
-* Tìm hiểu bảo mật Amazon S3:
-  * Bucket Policy.
-  * Block Public Access.
-  * Quyền truy cập công khai.
-
-* Thực hành IAM Role:
-  * Tạo IAM Role.
-  * Gán Role cho EC2.
-  * Truy cập Amazon S3 bằng AWS CLI.
-
-* Tìm hiểu EC2 User Data:
-  * Khởi tạo EC2 với User Data.
-  * Tự động cài Apache.
-  * Triển khai trang web.
-
-* Thực hành AWS CLI:
-  * Cấu hình AWS CLI.
-  * Xác minh IAM User.
-  * Tải tệp lên Amazon S3.
-  * Hiểu IAM Deny Policy.
-
-* Tìm hiểu Amazon RDS:
-  * Tạo cơ sở dữ liệu MySQL.
-  * Cấu hình Security Group.
-  * Kết nối EC2 với RDS.
-  * Kiểm tra kết nối cơ sở dữ liệu.
-
-* Triển khai ứng dụng web:
-  * Cài Apache và PHP.
-  * Kết nối PHP với Amazon RDS.
-  * Truy cập ứng dụng qua Public IP.
-
-* Nâng cao kỹ năng thực hành với Amazon S3, IAM, EC2, AWS CLI và Amazon RDS.
+* **Mức độ hoàn thành:** 100%.
+* **Kiến thức lý thuyết:**
+  * Hiểu cơ chế phân quyền RBAC và ABAC trong IAM, sự khác biệt giữa IAM User (người dùng lâu dài) và IAM Role (danh tính tạm thời dùng AWS STS token).
+  * Hiểu vòng đời của EC2 Instance (Pending, Running, Stopping, Stopped, Terminated) và cơ chế định giá (On-Demand, Spot, Reserved Instances, Savings Plans).
+  * Nắm vững cơ chế tính nhất quán của S3 (Strong Read-After-Write Consistency).
+* **Kỹ năng thực hành:**
+  * Xây dựng hoàn chỉnh một Web Server chạy trên EC2 được bảo vệ bởi Security Group đúng chuẩn.
+  * Xuất bản website tĩnh hoàn toàn không cần server trên Amazon S3.
+  * Loại bỏ rủi ro rò rỉ credential bằng cách sử dụng IAM Role gán vào EC2 Instance Profile.

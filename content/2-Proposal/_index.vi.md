@@ -60,7 +60,7 @@ Hệ thống ứng dụng mô hình kiến trúc Event-Driven Serverless, tách 
 
 ## Kiến trúc giải pháp
 
-![Kiến trúc hệ thống](/images/2-Proposal/system_architecture.png)
+![Kiến trúc hệ thống](/images/5-Workshop/5.1-Workshop-overview/diagram.drawio.png)
 
 ## Các dịch vụ AWS sử dụng
 

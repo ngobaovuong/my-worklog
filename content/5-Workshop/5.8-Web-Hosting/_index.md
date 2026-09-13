@@ -1,6 +1,6 @@
 ---
 title : "Static Web Hosting on S3"
-date : 2026-09-25
+date : 2026-09-13
 weight : 8
 chapter : false
 pre : " <b> 5.8. </b> "

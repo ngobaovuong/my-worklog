@@ -1,6 +1,6 @@
 ---
 title : "Phát triển logic với AWS Lambda"
-date : 2026-09-25
+date : 2026-09-13
 weight : 6
 chapter : false
 pre : " <b> 5.6. </b> "

@@ -1,6 +1,6 @@
 ---
 title : "Xây dựng cổng kết nối API Gateway"
-date : 2026-09-25
+date : 2026-09-13
 weight : 7
 chapter : false
 pre : " <b> 5.7. </b> "

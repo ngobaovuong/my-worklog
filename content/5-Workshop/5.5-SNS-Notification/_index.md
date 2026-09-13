@@ -1,6 +1,6 @@
 ---
 title : "SNS Notification Setup"
-date : 2026-09-25
+date : 2026-09-13
 weight : 5
 chapter : false
 pre : " <b> 5.5. </b> "

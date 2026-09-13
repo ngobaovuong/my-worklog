@@ -1,6 +1,6 @@
 ---
 title : "System Testing & Fault Injection"
-date : 2026-09-25
+date : 2026-09-13
 weight : 10
 chapter : false
 pre : " <b> 5.10. </b> "
